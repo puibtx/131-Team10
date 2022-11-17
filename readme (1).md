@@ -1,5 +1,5 @@
 # Team 10 Website Project
 - Name (@nickfaylor)
-- Name (@username)
+- Joshua Jose (@laraido)
 - Name (@username)
 - Name (@username)
