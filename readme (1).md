@@ -1,5 +1,5 @@
 # Team 10 Website Project
-- Name (@nickfaylor)
+- Nick Faylor (@nickfaylor)
 - Name (@username)
 - Name (@username)
 - Name (@username)
