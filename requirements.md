@@ -17,10 +17,10 @@
 
 ## Non-functional Requirements
 
-1. non-functional
-2. non-functional
-3. non-functional
-4. non-functional
+1. Works on Google Chrome
+2. Consistent font throughout site
+3. Text length constraints
+4. Using elements from bootstraps
 
 ## Use Cases
 
