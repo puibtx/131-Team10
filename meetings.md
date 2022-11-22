@@ -10,6 +10,7 @@ Team member decide which functional requirment they want to code on (write the u
 
 - Nick worked on use cases for 'send messages to followers' and 'like/dislike posts'. Will work on planning out the parts of programming I will be completing.
 - Jose C worked on use cases for 'search users'. Helped choose and assigned requirements. Will work on setting up project soon.
-- Haolin J worked on user case for 'follow users' and 'display other user profile'. schudle the meetings, will work on the programming part soon.  
+- Haolin J worked on user case for 'follow users' and 'display other user profile'. Schedule the meetings, will work on the programming part soon.  
+- Joshua J worked on the use case for 'post pictures/text' and 'accept/decline follow requests'. Will start the programming soon.
 
 
