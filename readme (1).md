@@ -2,4 +2,4 @@
 - Nick Faylor (@nickfaylor)
 - Joshua Jose (@laraido)
 - Haolin Jiang (@puibtx)   - TEAM LEAD
-- Name (@username)
+- Jose Cortes (@torta19)
