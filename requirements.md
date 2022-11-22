@@ -2,18 +2,18 @@
 
 ## Functional Requirements
 
-1. requirement
-2. requirement
-3. requirement
-4. requirement
-5. requirement
-6. requirement
-7. requirement
-8. requirement
-9. requirement
-10. requirement
-11. requirement
-12. requirement
+1. Login
+2. Logout
+3. Create New Account
+4. Delete Account
+5. User home page
+6. Send message to followers/users
+7. Post pictures/text
+8. Like/Dislike posts
+9. Accept/Decline follow requests
+10. Follow Users
+11. Display others' profiles
+12. Search Users
 
 ## Non-functional Requirements
 
