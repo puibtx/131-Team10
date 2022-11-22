@@ -3,7 +3,8 @@
 
 
 ### 2022-11-21 at 21:00
-Nick worked on use cases for 'send messages to followers' and 'like/dislike posts'. Will work on planning out the parts of programming I will be completing.
+- Nick worked on use cases for 'send messages to followers' and 'like/dislike posts'. Will work on planning out the parts of programming I will be completing.
+- Jose C worked on use cases for 'search users'. Helped choose and assigned requirements. Will work on setting up project soon.
 
 
 ### 2022-04-22 at 10:30
