@@ -1,5 +1,5 @@
 # Team 10 Website Project
 - Nick Faylor (@nickfaylor)
 - Joshua Jose (@laraido)
-- Name (@username)
+- Haolin Jiang (@puibtx)
 - Name (@username)
