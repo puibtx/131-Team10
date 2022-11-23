@@ -1,6 +1,5 @@
 # Team 10 Website Project
-- Name (@nickfaylor)
-- Name (@username)
-- Name (@username)
-- Name (@username)
-
+- Nick Faylor (@nickfaylor)
+- Joshua Jose (@laraido)
+- Haolin Jiang (@puibtx)   - TEAM LEAD
+- Jose Cortes (@torta19)
