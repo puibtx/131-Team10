@@ -13,12 +13,5 @@ Team member decide which functional requirment they want to code on (write the u
 - Haolin J worked on user case for 'follow users' and 'display other user profile'. Schedule the meetings, will work on the programming part soon.  
 - Joshua J worked on the use case for 'post pictures/text' and 'accept/decline follow requests'. Will start the programming soon.
 
-### 2022-04-22 at 10:30
-<meeting template would go here>
-<only fill in template once you had the meeting>
 
-### 2022-04-29 at 10:30
-- Who attended the meeting
-- Team updates (15min or less)
-  <Each team member gives an update of what they did from the last meeting and what they plan to do next. If they are stuck, bring it up here to see if others can help.>
-  - <name> worked on X. Will work on Y next. 
+   
