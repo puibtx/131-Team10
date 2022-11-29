@@ -1,34 +1,10 @@
-html,
-body {
-  height: 100%;
-}
 
-body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #ec0b0b44;
-}
+.gradient-custom{
+  background: #6a11cb;
 
 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-}
+  background: -webkit-linear-gradient(to right, rgba(7, 35, 112, 1), rgba(37, 117, 252, 1));
+  
 
-.form-signin .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  background: linear-gradient(to right, rgb(7, 35, 112), rgba(37, 117, 252, 1))
 }
