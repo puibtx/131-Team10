@@ -111,7 +111,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
  
  Accepted follower request will add to user’s followers count in profile while a declined follower request does not
  
- - **Alternate Sequence:**
+- **Alternate Sequence:**
  
   1. Can’t accept a follower if that follower recently deleted their account
   2. The user profile will just say the account does not exist or has been deleted
