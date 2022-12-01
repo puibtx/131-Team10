@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block title %} signup {% endblock %} {% block
+content %}
+
+<form method="POST">
+  <h2 class="fw-bold mb-2 text-uppercase">Please sign up</h2>
+  <br />
+
+  <!--first name label-->
+  <div class="row">
+    <div class="col-md-6 mb-10">
+      <div class="form-group">
+        {{ form.firstName.label(class = "form-label", style = "float: left") }}
+        {{ form.firstName(class = "form-control")}}
+      </div>
+    </div>
+    <!--last name label-->
+    <div class="col-md-6 mb-10">
+      <div class="form-group">
+        {{ form.lastName.label(class = "form-label", style = "float: left") }}
+        {{ form.lastName(class = "form-control")}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-outline form-white mb-10">
+    {{ form.email.label(class = "form-label", style = "float: left") }} {{
+    form.email(class = "form-control")}}
+  </div>
+
+  <div class="form-outline form-white mb-10">
+    {{ form.username.label(class = "form-label", style = "float: left") }} {{
+    form.username(class = "form-control")}}
+  </div>
+
+  <div class="form-group mb-10">
+    {{ form.password.label(class = "form-label", style = "float: left") }} {{
+    form.password(class = "form-control")}}
+  </div>
+
+  <div class="form-group mb-10">
+    {{ form.confirm.label(class = "form-label", style = "float: left") }} {{
+    form.confirm(class = "form-control")}}
+  </div>
+
+  <br />
+  <p>{{ form.create(class="btn btn-outline-light btn-lg px-5") }}</p>
+  <br />
+  <p class="mb-0">
+    Already have an account?
+    <a class="button" href="/login">Sign in</a>
+  </p>
+</form>
+{% endblock %}
