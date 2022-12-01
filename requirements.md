@@ -118,7 +118,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
  
  
 5. Search users (jose c.)
--**pre-condition:**  User has logged in
+- **pre-condition:**  User has logged in
  
 - **Trigger:** User clicks on search bar
  
