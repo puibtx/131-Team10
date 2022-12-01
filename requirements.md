@@ -19,7 +19,7 @@
 
 1. Works on Google Chrome
 2. Consistent font throughout site
-3. Text length constraint of no more than 250 characters for posts
+3. Text length constraints
 4. Using elements from bootstraps
 
 ## Use Cases
