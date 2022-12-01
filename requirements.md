@@ -164,7 +164,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
 - **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
 
   1.The user try to follow an account that is deleted
-  2. A pop up message, or on screen display showing the user you trying to follow does not exist
+  2.A pop up message, or on screen display showing the user you trying to follow does not exist
 
 
 7. Display current/ others’ user profile (Haolin)
@@ -186,7 +186,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
 
 - **Primary Postconditions:** 
  
-The current user’s page and or anothers’ page, will display their user name, maybe a profile picture, the people that you/they have followed, and the amount of followed and followers you or they have. 
+ The current user’s page and or anothers’ page, will display their user name, maybe a profile picture, the people that you/they have followed, and the amount of followed and followers you or they have. 
 
 
 - **Alternate Sequence:** 
