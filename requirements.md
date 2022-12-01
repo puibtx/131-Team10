@@ -89,7 +89,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
   1. Post is able to be viewed by other users
   2. Post is able to get likes or dislikes
  
- - **Alternate Sequence:**
+- **Alternate Sequence:**
  
   1. Posting pictures that are not supported
   2. Text entry is too long 
