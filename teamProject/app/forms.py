@@ -11,14 +11,14 @@ class LoginForm(FlaskForm):
 
 
 class SignupForm(FlaskForm):
-    email = EmailField('Email', validators=[DataRequired()])
+    email = EmailField('Email', validators=[InputRequired()])
     firstName = StringField(
-        'First Name', validators=[DataRequired(), Length(min=2, max=15)])
+        'First Name', validators=[InputRequired(), Length(min=2, max=15)])
     lastName = StringField('Last Name', validators=[
-                           DataRequired(), Length(min=2, max=15)])
+                           InputRequired(), Length(min=2, max=15)])
     username = StringField('Username', validators=[
-                           DataRequired(), Length(min=6, max=15)])
+                           InputRequired(), Length(min=6, max=15)])
     password = PasswordField('Password', validators=[InputRequired()])
     confirm = PasswordField('Confirm Password', validators=[InputRequired(), EqualTo(
-        'Password', message='Passwords must match')])
+        password, message='Passwords must match')])
     create = SubmitField('Create Account')

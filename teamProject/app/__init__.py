@@ -1,8 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
-from os import path
+from datetime import datetime
 
+
+#database is created
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
@@ -13,10 +15,12 @@ def build_app():
     from .routes import routes
     from .auth import auth
 
+    # configured database
     myapp.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 
     db.init_app(myapp)
 
+    # extend the application with its contents
     myapp.register_blueprint(routes, url_prefix='/')
     myapp.register_blueprint(auth, url_prefix='/')
 
@@ -26,8 +30,3 @@ def build_app():
         db.create_all()
 
     return myapp
-
-
-def build_DB(myapp):
-    if not path.exists('app/' + DB_NAME):
-        db.create_all(myapp=myapp)

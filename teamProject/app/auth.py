@@ -9,16 +9,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 auth = Blueprint('auth', __name__)
 
 
-@auth.route("/error")
-def base():
-    return render_template("base.html")
-
-
-@auth.route("/", methods=['GET', 'POST'])
+@auth.route("/")
+@auth.route("/signin", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
 
-    return render_template("login.html", form=form)
+    return render_template("signin.html", form=form)
 
 
 @auth.route("/signup", methods=['GET', 'POST'])
@@ -31,10 +27,10 @@ def signup():
         username = request.form.get('username')
         password = request.form.get('password')
         new_user = User(email=email, firstName=firstName, lastName=lastName,
-                        username=username, password=generate_password_hash(method='sha512'))
+                        username=username, password=generate_password_hash(password, method='sha512'))
         db.session.add(new_user)
         db.session.commit()
 
         flash('Succes! welcome')
-        return redirect(url_for("login"))
+        return redirect(url_for('auth.signin'))
     return render_template("signup.html", form=form)
