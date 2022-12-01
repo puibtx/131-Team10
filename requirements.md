@@ -102,10 +102,10 @@ Users recently inputted like/dislike will increment one to the amount of total l
 - **Trigger:** User clicks accept/decline follow request
  
 - **Primary Sequence:** 
- 
-  1. User is able to accept or decline a follow request
-  2. User can view the potential follower’s profile
-  3. User is able to message potential follower
+  1. Sends notification on new follower request
+  2. User clicks on notification for new follower request
+  3. User can click accept or decline follower request
+  4. User count increases by one if follower is accepted
  
 - **Primary Postconditions:** 
  
