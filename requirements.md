@@ -56,7 +56,7 @@ The recipient(s) gets the message from the user and may view it in their inbox f
  
 - **Primary Sequence:**
   
-  1.  System displays post from any user
+  1.  System displays post from any user at home page or user profile
   2.  User either selects like or dislike button
   3.  System displays the number of likes/dislikes on the post already
   4.  User can scroll to another post
