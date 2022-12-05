@@ -2,10 +2,12 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_login import LoginManager
 
 
 #database is created
 db = SQLAlchemy()
+
 DB_NAME = "database.db"
 
 
@@ -18,13 +20,20 @@ def build_app():
     # configured database
     myapp.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 
-    db.init_app(myapp)
-
     # extend the application with its contents
     myapp.register_blueprint(routes, url_prefix='/')
     myapp.register_blueprint(auth, url_prefix='/')
 
     from .models import User
+
+    db.init_app(myapp)
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(myapp)
+
+    @login_manager.user_loader
+    def load(id):
+        return User.query.get(int(id))
 
     with myapp.app_context():
         db.create_all()

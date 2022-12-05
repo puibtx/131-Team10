@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .forms import LoginForm, SignupForm
 from .models import User
 from . import db
+from flask_login import logout_user, login_required
 
 from werkzeug.security import generate_password_hash, check_password_hash
 # pages here are for login, signup, etc...
@@ -15,6 +16,13 @@ def login():
     form = LoginForm()
 
     return render_template("signin.html", form=form)
+
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 
 @auth.route("/signup", methods=['GET', 'POST'])
