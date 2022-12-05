@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %} signup {% endblock %} {% block
+content %}
+
+<h2 class="fw-bold mb-2 text-uppercase">Please sign up</h2>
+
+<form method="POST" action="">
+  {{ form.csrf_token }}
+  <br />
+
+  <!--first name label-->
+
+  <div class="form-outline form-white mb-10">
+    {{ form.email.label(class = "form-label", style = "float: left") }} {{
+    form.email(class = "form-control")}} {% if form.email.errors %}
+    <ul class="errors list-group">
+      {% for error in form.email.errors %}
+      <li>{{error}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div class="form-outline form-white mb-10">
+    {{ form.username.label(class = "form-label", style = "float: left") }} {{
+    form.username(class = "form-control")}} {% if form.username.errors %}
+    <ul class="errors list-group">
+      {% for error in form.username.errors %}
+      <li>{{error}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div class="form-group mb-10">
+    {{ form.password.label(class = "form-label", style = "float: left") }} {{
+    form.password(class = "form-control")}} {% if form.password.errors %}
+    <ul class="errors list-group">
+      {% for error in form.password.errors %}
+      <li>{{error}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <div class="form-group mb-10">
+    {{ form.confirm.label(class = "form-label", style = "float: left") }} {{
+    form.confirm(class = "form-control")}} {% if form.confirm.errors %}
+    <ul class="errors list-group">
+      {% for error in form.confirm.errors %}
+      <li>{{error}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <br />
+  <p>{{ form.create(class="btn btn-outline-light btn-lg px-5") }}</p>
+  <br />
+  <p class="mb-0">
+    Already have an account?
+    <a class="button" href="/signin">Sign In</a>
+  </p>
+</form>
+{% endblock %}
