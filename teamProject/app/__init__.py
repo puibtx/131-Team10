@@ -2,7 +2,7 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-
+from os import path
 
 #database is created
 db = SQLAlchemy()
@@ -24,9 +24,14 @@ def build_app():
     myapp.register_blueprint(routes, url_prefix='/')
     myapp.register_blueprint(auth, url_prefix='/')
 
-    from .models import User
+    from .models import User, Post
 
     with myapp.app_context():
         db.create_all()
 
     return myapp
+
+def create_database(myapp):
+    if not path.exists('app/' + DB_NAME):
+        db.create_all(myapp=myapp)
+
