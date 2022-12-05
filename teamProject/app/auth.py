@@ -27,12 +27,11 @@ def signup():
         #last_name = request.form.get('lastName')
         username = request.form.get('username')
         password = request.form.get('password')
-        new_user = db.session.query.filter_by(email=email).first()
-        if new_user is None:
-            new_user = User(email=email,
-                            username=username, password=generate_password_hash(password, method='sha512'))
-            db.session.add(new_user)
-            db.session.commit()
+
+        new_user = User(email=email,
+                        username=username, password=generate_password_hash(password, method='sha512'))
+        db.session.add(new_user)
+        db.session.commit()
 
         flash('Success! welcome')
         return redirect(url_for('auth.login'))
