@@ -26,3 +26,6 @@ def delete(username):
 @login_required
 def user_home(username):
     return render_template('home.html', username=username)
+    
+    
+  
