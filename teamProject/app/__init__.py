@@ -9,7 +9,7 @@ from flask_login import LoginManager
 #database is created
 db = SQLAlchemy()
 
-DB_NAME = "app.db"
+DB_NAME = "database.db"
 
 
 def build_app():
