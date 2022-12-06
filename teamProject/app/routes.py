@@ -6,11 +6,11 @@ from . import db
 views = Blueprint('routes', __name__)
 
 
-@views.route('/delete/<int:id>')
+@views.route('/delete/<username>')
 @login_required
-def delete(id):
+def delete(username):
 
-    delete_user = User.query.get_or_404(current_user.id)
+    delete_user = User.query.get_or_404(current_user.username)
 
     try:
         db.session.delete(delete_user)
@@ -22,7 +22,7 @@ def delete(id):
         flash('failed to delete account')
 
 
-@views.route('/home')
+@views.route('/home/<username>')
 @login_required
-def user_home():
-    return render_template('home.html')
+def user_home(username):
+    return render_template('home.html', username=username)
