@@ -2,12 +2,9 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-<<<<<<< HEAD
 from os import path
-=======
 from flask_login import LoginManager
 
->>>>>>> 3e4950a9b35c4ca2e397c5be3f9b970c18692951
 
 #database is created
 db = SQLAlchemy()
