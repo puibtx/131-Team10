@@ -22,7 +22,7 @@ def delete(id):
         flash('failed to delete account')
 
 
-@login_required
 @views.route('/home')
+@login_required
 def user_home():
     return render_template('home.html')
