@@ -23,7 +23,7 @@ def login():
         if user and check_password_hash(user.password, password):
 
             login_user(user, remember=remember)
-            return redirect(url_for('routes.user_home', username=user.get_username()))
+            return redirect(url_for('routes.dashboard', username=user.get_username()))
         else:
             flash('invalid email or password!', category='error')
     return render_template("signin.html", form=form)
@@ -61,8 +61,3 @@ def signup():
             flash('User already exists', category='error')
 
     return render_template("signup.html", form=form)
-    
-@auth.route('/home/<username>/profile')
-@login_required
-def user_profile():
-    return render_template('profile.html', current_user=username)	

@@ -24,8 +24,15 @@ def delete():
         flash('failed to delete account')
 
 
-@views.route('/home/<username>', methods=['GET', 'POST'])
+@views.route('/dashboard/<username>', methods=['GET', 'POST'])
 @login_required
-def user_home(username):
+def dashboard(username):
 
     return render_template('home.html', username=username)
+
+
+@views.route('/home/<username>', methods=['GET', 'POST'])
+@login_required
+def home(username):
+
+    return render_template('profile.html', username=username)
