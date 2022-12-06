@@ -1,4 +1,4 @@
-from app import db
+from . import db
 from flask_login import UserMixin
 
 
@@ -9,3 +9,6 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(15), index=True)
     last_name = db.Column(db.String(15), index=True)
     password = db.Column(db.String(100))
+
+    def get_username(self):
+        return self.username
