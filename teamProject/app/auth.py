@@ -61,3 +61,8 @@ def signup():
             flash('User already exists', category='error')
 
     return render_template("signup.html", form=form)
+    
+@auth.route("/profile", methods=['GET', 'POST'])
+def profile():
+	render_template("profile.html")
+
