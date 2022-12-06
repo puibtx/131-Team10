@@ -23,10 +23,13 @@ def delete(id):
         flash('failed to delete account')
 
 
+
 @views.route('/home')
 @login_required
 def user_home():
     return render_template('index.html', user=current_user)
+
+
 
 @views.route('/post', methods=['GET', 'POST'])
 @login_required
@@ -55,4 +58,5 @@ def deletePost():
         if post.user_id == current_user.id:
             db.session.delete(post)
             db.session.commit()
-            return jsonify({})
+    
+    return jsonify({})
