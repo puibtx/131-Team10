@@ -29,8 +29,8 @@ def user_home(username):
     
     
 
-@views.route('/home/profile/<username>')
+@views.route('/home/profile')
 @login_required
-def user_profile(username):
-    return render_template('profile.html', username=username)  
+def user_profile():
+    return render_template('profile.html')  
   

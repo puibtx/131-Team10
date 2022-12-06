@@ -1,7 +1,7 @@
 {% extends 'index.html' %} {% block title %} {{username}}'s home {% endblock %}
 
 {% block  navbar_items%}
-    <a class="nav-item nav-link" href={{url_for('auth.profile')}}>profile</a>
+    <a class="nav-item nav-link" href={{url_for('routes.user_profile')}}>Profile</a>
     <a class="nav-item nav-link" href='#'>post</a>
     <a class="nav-item nav-link" href='#'>messages</a>
     <a class="nav-item nav-link" href={{url_for('auth.logout')}}>sign out</a>
