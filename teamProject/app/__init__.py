@@ -3,6 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import LoginManager
+from .forms import SearchForm
 
 
 #database is created
@@ -34,6 +35,11 @@ def build_app():
     @login_manager.user_loader
     def load(id):
         return User.query.get(int(id))
+
+    @myapp.context_processor
+    def base():
+        form = SearchForm()
+        return dict(form=form)
 
     with myapp.app_context():
         db.create_all()

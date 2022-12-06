@@ -62,17 +62,11 @@ def signup():
 
     return render_template("signup.html", form=form)
 
-#search function
-@auth.route("/search", methods=['POST'])
-# @auth.route("/search", methods=['GET', 'POST'])
+@auth.route("/search", methods=['GET', 'POST'])
 def search():
         form = SearchForm()
         if form.validate_on_submit():
             post.searched = form.searched.data
             return render_template("search.html",form=form,searched=post.searched)
 
-#passing stuff to nav bar
-@auth.context_processor
-def base():
-    form = SearchForm()
-    return dict(form=form)
+# return render_template("search.html",form=form,searched=post.searched)
