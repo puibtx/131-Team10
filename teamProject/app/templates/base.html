@@ -24,19 +24,13 @@
             <div class="card bg-dark text-white" style="border-radius: 1rem">
               <div class="card-body p-5 text-center">
                 <div class="mb-md-5 mt-md-4 pb-5">
+                  
                   {% block content %} 
                   <!--start home page in home page create link for login and sign up-->
-                  {% with messages = get_flashed_messages() %} 
-                {% if messages %} 
-        <ul> 
-            {% for message in messages %} 
-            <li>{{ message }}</li> 
-            {% endfor %} 
-        </ul> 
-        {% endif %} 
-        {% endwith %} 
+                  
                   
                 {% endblock %}
+                
               </div>
             </div>
           </div>
