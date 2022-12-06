@@ -33,11 +33,17 @@
             >Home <span class="sr-only">(current)</span></a
           >
           <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}>profile</a>
+          <a class="nav-item nav-link" href='#'>search</a>
           <a class="nav-item nav-link" href='#'>post</a>
           <a class="nav-item nav-link" href='#'>messages</a>
           {% block usersettings %}
           
           {%endblock%}
+          <form method= "POST" action"{{url_for('auth.search')}}" class="d-flex">
+            {{form.hidden_tag()}}
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search",name="searched">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          
           
         </div>
       </div>

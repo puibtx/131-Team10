@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .forms import LoginForm, SignupForm
+from .forms import LoginForm, SignupForm, SearchForm
 from .models import User
 from . import db
 from flask_login import logout_user, login_required, login_user, current_user
@@ -61,3 +61,13 @@ def signup():
             flash('User already exists', category='error')
 
     return render_template("signup.html", form=form)
+
+
+@auth.route("/search", methods=['GET', 'POST'])
+def search():
+    form = SearchForm()
+    if form.validate_on_submit():
+        post.searched = form.searched.data
+        return render_template("search.html", form=form, searched=post.searched)
+
+# return render_template("search.html",form=form,searched=post.searched)

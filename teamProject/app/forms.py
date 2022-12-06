@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, BooleanField, SubmitField, StringField
 from wtforms.validators import ValidationError, DataRequired, EqualTo, Length
+from .models import User
 
 
 class LoginForm(FlaskForm):
@@ -8,6 +9,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+    # username = UsernameField('Username', validators=[DataRequired()])
 
 
 class SignupForm(FlaskForm):
@@ -27,5 +29,6 @@ class SignupForm(FlaskForm):
     create = SubmitField('Create Account')
 
 
-class DeleteForm(FlaskForm):
-    delete = SubmitField('DELETE')
+class SearchForm(FlaskForm):
+    searched = StringField('Searched', validators=[DataRequired()])
+    submit = SubmitField('Submit')
