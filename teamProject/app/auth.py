@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .forms import LoginForm, SignupForm
 from .models import User
 from . import db
-from flask_login import logout_user, login_required, login_user, current_user
+from flask_login import logout_user, login_required, login_user
 
 from werkzeug.security import generate_password_hash, check_password_hash
 # pages here are for login, signup, etc...
@@ -62,7 +62,4 @@ def signup():
 
     return render_template("signup.html", form=form)
     
-@auth.route('/home/<username>/profile')
-@login_required
-def user_profile():
-    return render_template('profile.html', current_user=username)	
+	
