@@ -10,9 +10,15 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(15), index=True)
     last_name = db.Column(db.String(15), index=True)
     password = db.Column(db.String(100))
+<<<<<<< HEAD
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
 # @login.user_loader
 # def load_user(id):
 #     return User.query.get(int(id))
+=======
+
+    def get_username(self):
+        return self.username
+>>>>>>> b439867ab5de07ba0fe9ea7a0ad1d993007f78c6
