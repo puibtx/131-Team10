@@ -25,3 +25,7 @@ class SignupForm(FlaskForm):
         message='please confirm password'),
         EqualTo('password', message='Both password fields must be equal!')])
     create = SubmitField('Create Account')
+
+
+class DeleteForm(FlaskForm):
+    delete = SubmitField('DELETE')
