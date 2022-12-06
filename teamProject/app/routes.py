@@ -10,7 +10,7 @@ views = Blueprint('routes', __name__)
 @views.route('/delete')
 @login_required
 def delete():
-    print('hi')
+
     delete_user = User.query.filter_by(id=current_user.id).first()
 
     try:
