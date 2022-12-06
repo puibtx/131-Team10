@@ -3,32 +3,34 @@ from flask_login import login_required, current_user
 from .models import User, Post
 from . import db
 import json
+from .forms import DeleteForm
 
 views = Blueprint('routes', __name__)
 
 
-@views.route('/delete/<int:id>')
+@views.route('/delete')
 @login_required
-def delete(id):
-
-    delete_user = User.query.get_or_404(current_user.id)
+def delete():
+    print('hi')
+    delete_user = User.query.filter_by(id=current_user.id).first()
 
     try:
+
         db.session.delete(delete_user)
         db.session.commit()
         flash('account deleted')
-        redirect(url_for('auth.login'))
+        return redirect(url_for('auth.login'))
 
     except:
         flash('failed to delete account')
 
 
-
+"""""
 @views.route('/home')
 @login_required
 def user_home():
     return render_template('index.html', user=current_user)
-
+"""""
 
 
 @views.route('/post', methods=['GET', 'POST'])
@@ -44,7 +46,7 @@ def post():
             db.session.add(new_post)
             db.session.commit()
             flash('Post uploaded', category='success')
-            return redirect(url_for('routes.user_home'))
+            return redirect(url_for('routes.home'))
 
     return render_template('post.html', user=current_user)
 
@@ -60,3 +62,16 @@ def deletePost():
             db.session.commit()
     
     return jsonify({})
+
+@views.route('/dashboard/<username>', methods=['GET', 'POST'])
+@login_required
+def dashboard(username):
+
+    return render_template('home.html', username=username)
+
+
+@views.route('/home/<username>', methods=['GET', 'POST'])
+@login_required
+def home(username):
+
+    return render_template('profile.html', username=username)

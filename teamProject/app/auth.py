@@ -17,11 +17,18 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
+        remember = request.form.get('remember_me')
         user = User.query.filter_by(email=email).first()
+
         if user and check_password_hash(user.password, password):
+<<<<<<< HEAD
             login_user(user, remember=True)
             return redirect(url_for('routes.user_home'))
+=======
+
+            login_user(user, remember=remember)
+            return redirect(url_for('routes.dashboard', username=user.get_username()))
+>>>>>>> d2297495f2de3b10e74205c3ff7a6c9ecbce0bb0
         else:
             flash('invalid email or password!', category='error')
     return render_template("signin.html", form=form)

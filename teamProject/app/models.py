@@ -17,3 +17,6 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(15), index=True)
     password = db.Column(db.String(100))
     posts = db.relationship('Post')
+
+    def get_username(self):
+        return self.username
