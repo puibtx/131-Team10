@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .forms import LoginForm, SignupForm
 from .models import User
 from . import db
-from flask_login import logout_user, login_required
+from flask_login import logout_user, login_required, login_user, current_user
 
 from werkzeug.security import generate_password_hash, check_password_hash
 # pages here are for login, signup, etc...
@@ -20,7 +20,7 @@ def login():
 
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password, password):
-
+            login_user(user, remember=True)
             return redirect(url_for('routes.user_home'))
         else:
             flash('invalid email or password!', category='error')
@@ -52,6 +52,7 @@ def signup():
                         username=username, password=generate_password_hash(password, method='sha512'))
             db.session.add(user)
             db.session.commit()
+            login_user(user, remember=True)
             flash('Success! welcome', category='success')
             return redirect(url_for('auth.login'))
 
