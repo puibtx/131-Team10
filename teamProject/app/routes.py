@@ -35,9 +35,6 @@ def user_home():
 
 
 @views.route('/home/<username>/post', methods=['GET', 'POST'])
-=======
-@views.route('/dashboard/<username>/post', methods=['GET', 'POST'])
->>>>>>> 2413138faa14a9d742d0321fe84c12341b829826
 @login_required
 def post(username):
     if request.method == 'POST':
@@ -68,12 +65,8 @@ def deletePost():
 
     return jsonify({})
 
-<<<<<<< HEAD
-@views.route('/dashboard/<username>', methods=['GET', 'POST'])
-=======
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
->>>>>>> 2413138faa14a9d742d0321fe84c12341b829826
 @login_required
 def feed(username):
 
