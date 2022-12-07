@@ -48,7 +48,7 @@ def post(username):
 
 @views.route('/delete-post', methods=['POST'])
 @login_required
-def delete_post():
+def deletePost():
     post = json.loads(request.data)
     postId = post['postId']
     post = Post.query.get(postId)
