@@ -2,12 +2,12 @@
 
 
 {% block navbaritems %}
-          <a class="nav-item nav-link" href={{url_for('routes.feed', username=username)}}
+          <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}
             >Home <span class="sr-only"></span></a
           >
           <a class="nav-item nav-link active" href={{url_for('routes.home', username=username)}}>profile</a>
           
-          <a class="nav-item nav-link" href={{url_for('routes.#', username=username)}}>post</a>
+          <a class="nav-item nav-link" href={{url_for('routes.post', username=username)}}>post</a>
           <a class="nav-item nav-link" href='#'>messages</a>
           
           
@@ -41,16 +41,7 @@
             
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
             <button type="submit" class="btn btn-outline-success">search</button>
-        </form>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class=flashes>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-  
-        </ul>
-          {% endif %}
-          {% endwith %}
+        
+        
           
           {%endblock%}

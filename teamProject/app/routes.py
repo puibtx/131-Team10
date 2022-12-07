@@ -28,7 +28,7 @@ def delete():
 
 
 
-@views.route('/home/<username>/post', methods=['GET', 'POST'])
+@views.route('/dashboard/<username>/post', methods=['GET', 'POST'])
 @login_required
 def post(username):
     if request.method == 'POST':
