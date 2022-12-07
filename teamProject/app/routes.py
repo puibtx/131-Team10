@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, request
+from flask import Blueprint, render_template, flash, redirect, url_for, request, jsonify
 from flask_login import login_required, current_user
-from .forms import SearchForm
-from .models import User
+
+from .models import User, Post
 from . import db
+import json
 
 views = Blueprint('routes', __name__)
 
@@ -22,6 +23,38 @@ def delete():
 
     except:
         flash('failed to delete account')
+
+
+@views.route('/dashboard/<username>/post', methods=['GET', 'POST'])
+@login_required
+def post(username):
+    if request.method == 'POST':
+        post = request.form.get('post')
+
+        if len(post) > 250:
+            flash('Text up to 250 characters', category='error')
+        else:
+            new_post = Post(data=post, user_id=current_user.id)
+            db.session.add(new_post)
+            db.session.commit()
+            flash('Post uploaded', category='success')
+            return redirect(url_for('routes.home'))
+
+    return render_template('home.html', user=current_user)
+
+
+@views.route('/delete-post', methods=['POST'])
+@login_required
+def deletePost():
+    post = json.loads(request.data)
+    postId = post['postId']
+    post = Post.query.get(postId)
+    if post:
+        if post.user_id == current_user.id:
+            db.session.delete(post)
+            db.session.commit()
+
+    return jsonify({})
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])

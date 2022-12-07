@@ -21,7 +21,6 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         if user and check_password_hash(user.password, password):
-
             login_user(user, remember=remember)
             return redirect(url_for('routes.feed', username=user.get_username()))
         else:

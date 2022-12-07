@@ -27,6 +27,18 @@ class SignupForm(FlaskForm):
         EqualTo('password', message='Both password fields must be equal!')])
     create = SubmitField('Create Account')
 
+    def validate_email(self, email):
+        user_object = User.query.filter_by(email=email.data).first()
+        if user_object:
+            raise ValidationError(
+                "Email already taken. Please pick a different Email address.")
+
+    def validate_username(self, username):
+        user_object = User.query.filter_by(username=username.data).first()
+        if user_object:
+            raise ValidationError(
+                "Username already exists. Please pick a different username.")
+
 
 class SearchForm(FlaskForm):
     searched = StringField('Searched', validators=[DataRequired()])
