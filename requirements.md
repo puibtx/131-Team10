@@ -10,7 +10,7 @@
 6. Send message to followers/users
 7. Post pictures/text
 8. Like/Dislike posts
-9. Accept/Decline follow requests
+9. Delete posts
 10. Follow Users
 11. Display others' profiles
 12. Search Users
@@ -96,25 +96,25 @@ Users recently inputted like/dislike will increment one to the amount of total l
   3. Shows the character count 
  
  
-4. Accept/Decline follow requests (Josh)
+4. Delete posts (Josh)
 - **Pre-condition:** User has logged in
  
-- **Trigger:** User clicks accept/decline follow request
+- **Trigger:** User clicks delete post
  
 - **Primary Sequence:** 
-  1. Sends notification on new follower request
-  2. User clicks on notification for new follower request
-  3. User can click accept or decline follower request
-  4. User count increases by one if follower is accepted
+  1. user must go to post that they want to delete
+  2. User clicks delete option
+  3. User confirms deletion
+  4. Post is removed and deleted from db
  
 - **Primary Postconditions:** 
  
- Accepted follower request will add to user’s followers count in profile while a declined follower request does not
+   1. post will be removed, user will be redirected
  
 - **Alternate Sequence:**
  
-  1. Can’t accept a follower if that follower recently deleted their account
-  2. The user profile will just say the account does not exist or has been deleted
+  1. User does not confirm deletion
+  2. The user will be redirected
  
  
 5. Search users (jose c.)
