@@ -29,7 +29,7 @@ def user_home(username):
     
     
 
-@views.route('/home/profile')
+@views.route('/home/profile', methods=['GET', 'POST'])
 @login_required
 def user_profile():
     return render_template('profile.html')  
