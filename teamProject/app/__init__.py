@@ -10,7 +10,7 @@ from .forms import SearchForm
 #database is created
 db = SQLAlchemy()
 
-DB_NAME = "database.db"
+DB_NAME = "app.db"
 
 
 def build_app():
@@ -47,7 +47,7 @@ def build_app():
 
     return myapp
 
+
 def create_database(myapp):
     if not path.exists('app/' + DB_NAME):
         db.create_all(myapp=myapp)
-
