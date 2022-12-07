@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
-from .forms import DeleteForm
+from .forms import SearchForm
 from .models import User
 from . import db
 
@@ -24,15 +24,29 @@ def delete():
         flash('failed to delete account')
 
 
-@views.route('/dashboard/<username>', methods=['GET', 'POST'])
+@views.route('/feed/<username>', methods=['GET', 'POST'])
 @login_required
-def dashboard(username):
+def feed(username):
 
-    return render_template('home.html', username=username)
+    return render_template('feed.html', username=username)
 
 
 @views.route('/home/<username>', methods=['GET', 'POST'])
 @login_required
 def home(username):
 
-    return render_template('profile.html', username=username)
+    return render_template('home.html', username=username)
+
+
+@views.route("/search", methods=['GET', 'POST'])
+@login_required
+def search():
+    if request.method == 'POST':
+        username = request.form.get('searched')
+        searched_user = User.query.filter_by(username=username).first()
+
+        if searched_user:
+
+            return redirect(url_for('routes.home', username=username))
+        else:
+            flash('user does not exist.', category='error')

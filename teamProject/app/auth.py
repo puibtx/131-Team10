@@ -23,7 +23,7 @@ def login():
         if user and check_password_hash(user.password, password):
 
             login_user(user, remember=remember)
-            return redirect(url_for('routes.dashboard', username=user.get_username()))
+            return redirect(url_for('routes.feed', username=user.get_username()))
         else:
             flash('invalid email or password!', category='error')
     return render_template("signin.html", form=form)
@@ -44,30 +44,26 @@ def signup():
         email = request.form.get('email')
         #first_name = request.form.get('firstName')
         #last_name = request.form.get('lastName')
-        username = request.form.get('username')
+
         password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
-        if not user:
 
-            user = User(email=email,
-                        username=username, password=generate_password_hash(password, method='sha512'))
-            db.session.add(user)
-            db.session.commit()
-            flash('Success! welcome', category='success')
-            return redirect(url_for('auth.login'))
+        if not user:
+            check_username = User.query.filter_by(
+                username=request.form.get('username')).first()
+            if check_username:
+                flash('Username already exists', category='error')
+            else:
+                username = request.form.get('username')
+                user = User(email=email,
+                            username=username, password=generate_password_hash(password, method='sha512'))
+                db.session.add(user)
+                db.session.commit()
+                flash('Success! welcome', category='success')
+                return redirect(url_for('auth.login'))
 
         else:
             flash('User already exists', category='error')
 
     return render_template("signup.html", form=form)
-
-
-@auth.route("/search", methods=['GET', 'POST'])
-def search():
-    form = SearchForm()
-    if form.validate_on_submit():
-        post.searched = form.searched.data
-        return render_template("search.html", form=form, searched=post.searched)
-
-# return render_template("search.html",form=form,searched=post.searched)
