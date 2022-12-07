@@ -40,13 +40,13 @@ def post(username):
         post = request.form.get('post')
 
         if len(post) > 250:
-            flash('Text up to 250 characters', category='error')
+            flash('Text no more than 250 characters!', category='error')
         else:
             new_post = Post(data=post, user_id = current_user.id)
             db.session.add(new_post)
             db.session.commit()
             flash('Post uploaded', category='success')
-            
+
 
     return render_template('post.html', user=current_user, username=username)
 

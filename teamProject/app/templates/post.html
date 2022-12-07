@@ -14,4 +14,16 @@
     <button type="submit" class="btn btn-primary">Add Post</button>
   </div>
 </form>
+
+<p class="text-white-50">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+
+    </ul>
+      {% endif %}
+      {% endwith %}</p>  
     {% endblock %}
