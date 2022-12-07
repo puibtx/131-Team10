@@ -4,12 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from os import path
 from flask_login import LoginManager
+from .forms import SearchForm
 
 
 #database is created
 db = SQLAlchemy()
 
-DB_NAME = "database.db"
+DB_NAME = "app.db"
 
 
 def build_app():
@@ -36,12 +37,17 @@ def build_app():
     def load(id):
         return User.query.get(int(id))
 
+    @myapp.context_processor
+    def base():
+        form = SearchForm()
+        return dict(form=form)
+
     with myapp.app_context():
         db.create_all()
 
     return myapp
 
+
 def create_database(myapp):
     if not path.exists('app/' + DB_NAME):
         db.create_all(myapp=myapp)
-
