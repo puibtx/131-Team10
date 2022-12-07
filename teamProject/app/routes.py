@@ -25,19 +25,10 @@ def delete():
         flash('failed to delete account')
 
 
-<<<<<<< HEAD
-"""""
-@views.route('/home')
-@login_required
-def user_home():
-    return render_template('index.html', user=current_user)
-"""""
+
 
 
 @views.route('/home/<username>/post', methods=['GET', 'POST'])
-=======
-@views.route('/dashboard/<username>/post', methods=['GET', 'POST'])
->>>>>>> 2413138faa14a9d742d0321fe84c12341b829826
 @login_required
 def post(username):
     if request.method == 'POST':
@@ -65,22 +56,18 @@ def deletePost():
         if post.user_id == current_user.id:
             db.session.delete(post)
             db.session.commit()
-
+    
     return jsonify({})
 
-<<<<<<< HEAD
-@views.route('/dashboard/<username>', methods=['GET', 'POST'])
-=======
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
->>>>>>> 2413138faa14a9d742d0321fe84c12341b829826
 @login_required
 def feed(username):
 
     return render_template('feed.html', username=username)
 
 
-@views.route('/home/<username>', methods=['GET', 'POST'])
+@views.route('/dashboard/<username>', methods=['GET', 'POST'])
 @login_required
 def home(username):
 
