@@ -41,17 +41,7 @@
       </div>
     </nav>
     {% block post %}
-    <p class="text-white-50">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class=flashes>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-          {% endfor %}
     
-        </ul>
-          {% endif %}
-          {% endwith %}</p>  
     {%endblock%}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
