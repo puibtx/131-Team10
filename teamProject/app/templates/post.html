@@ -6,7 +6,7 @@
     {% for post in user.posts %}
     <li class="list-group-item">
         {{ post.data }}
-        <button type="button" class="close" onClick="delete_post({{post.id}})">
+        <button type="button" class="close" onClick="deletePost({{ post.id }})">
             <span aria-hidden="true">&times;</span>
         </button>
     </li>
