@@ -33,7 +33,7 @@ def user_home():
 """""
 
 
-@views.route('/dashboard/<username>/post', methods=['GET', 'POST'])
+@views.route('/home/<username>/post', methods=['GET', 'POST'])
 @login_required
 def post(username):
     if request.method == 'POST':
@@ -48,7 +48,7 @@ def post(username):
             flash('Post uploaded', category='success')
             return redirect(url_for('routes.home'))
 
-    return render_template('home.html', user=current_user)
+    return render_template('post.html', user=current_user, username=username)
 
 @views.route('/delete-post', methods = ['POST'])
 @login_required
@@ -63,7 +63,7 @@ def deletePost():
     
     return jsonify({})
 
-@views.route('/home/<username>', methods=['GET', 'POST'])
+@views.route('/dashboard/<username>', methods=['GET', 'POST'])
 @login_required
 def dashboard(username):
 
