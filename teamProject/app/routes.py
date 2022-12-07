@@ -46,7 +46,7 @@ def post(username):
             db.session.add(new_post)
             db.session.commit()
             flash('Post uploaded', category='success')
-            return redirect(url_for('routes.home'))
+            
 
     return render_template('post.html', user=current_user, username=username)
 

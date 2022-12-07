@@ -1,7 +1,12 @@
 {% extends "home.html" %} {% block title %} Make a Post {% endblock %} 
-{% block usersettings %}
+{% block post %}
 <h1 align="center">Posts</h1>
 
+<ul class="list-group list-group-flush" id="posts">
+    {% for post in user.posts %}
+    <li class="list-group-item">{{ post.data }}</li>
+    {% endfor %}
+</ul>
 <form method="POST">
   <textarea name="post" id="post" class="form-control"></textarea>
   <br />
