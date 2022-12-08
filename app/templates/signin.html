@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} Sign In {% endblock %}
+{% block content %} {{ form.hidden_tag() }}
+<form method="POST" action="/">
+    <h2 class="fw-bold mb-2 text-uppercase">Sign in</h2>
+    <p class="text-white-50 mb-5">
+      Please enter your login and password
+    </p>
+
+    
+    <div class="form-outline form-white mb-4">
+        
+        {{ form.email.label(class =
+        "form-label", style = "float: left") }}
+        {{ form.email(class = "form-control", size = 32)}}
+    </div>
+
+    <div class="form-outline form-white mb-4">
+        
+        {{ form.password.label(class =
+        "form-label", style = "float: left") }}
+        {{ form.password(class = "form-control", size = 32)}}
+    </div>
+
+    <p class="text-white-50">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+  
+      </ul>
+        {% endif %}
+        {% endwith %}</p>
+
+    <br/>
+    <p>{{ form.remember_me() }}
+        {{form.remember_me.label}}
+    </p>
+
+    
+
+    <p class="small mb-5 pb-lg-2">
+      <a class="text-white-50" href="#!">Forgot password?</a>
+    </p>
+
+    <p>{{ form.submit(class="btn btn-outline-light btn-lg px-5") }}</p>
+    
+    
+  </form>
+</div>
+
+<div>
+  <p class="mb-0">
+    Don't have an account?
+    <a class="button" href="/signup">Sign Up</a>
+  </p>
+</div>
+{% endblock %}
+
