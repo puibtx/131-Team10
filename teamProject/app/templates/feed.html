@@ -44,7 +44,7 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
             <button type="submit" class="btn btn-outline-success">search</button>
           </form>
-          {% with messages = get_flashed_messages() %}
+          <!--{% with messages = get_flashed_messages() %}
           {% if messages %}
           <ul class=flashes>
           {% for message in messages %}
@@ -54,7 +54,7 @@
         </ul>
           {% endif %}
           {% endwith %}
-          {%endblock%}
+          {%endblock%}-->
         </div>
       </div>
     </nav>
@@ -67,9 +67,12 @@
       crossorigin="anonymous"
     ></script>
 
-   
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+    ></script>
 
 
-    
+
   </body>
 </html>

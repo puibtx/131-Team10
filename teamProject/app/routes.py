@@ -46,14 +46,18 @@ def post(username):
     return render_template('post.html', user=current_user, username=username)
 
 
-@views.route('/dashboard/<username>/delete-post/<int:id>')
+@views.route('/dashboard/<username>/post/delete-post/<int:id>')
 @login_required
 def deletePost(id, username):
     deleted_post = Post.query.get_or_404(id)
-    db.session.delete(deleted_post)
-    db.session.commit()
+    try:
+        db.session.delete(deleted_post)
+        db.session.commit()
+        flash("Deleted Post. To post again, go to 'post' in nav bar")
+        return render_template('deletePost.html', user=current_user, username=username)
+    except:
+        return 'Could not delete post'
     
-    return render_template('post.html', username=username, user=current_user)
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
