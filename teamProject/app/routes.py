@@ -46,18 +46,19 @@ def post(username):
     return render_template('post.html', user=current_user, username=username)
 
 
-@views.route('/delete-post', methods=['POST'])
+@views.route('/dashboard/<username>/delete-post/<int:id>')
 @login_required
-def deletePost():
-    post = json.loads(request.data)
-    postId = post['postId']
-    post = Post.query.get(postId)
-    if post:
-        if post.user_id == current_user.id:
-            db.session.delete(post)
-            db.session.commit()
+def deletePost(id, username):
+    deleted_post = Post.query.get_or_404(id)
     
-    return jsonify({})
+    try:
+        db.session.delete(deleted_post)
+        db.session.commit()
+        return redirect('/dashboard/<username>/post')
+
+    except:
+         return "Couldn't delete post"
+
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])

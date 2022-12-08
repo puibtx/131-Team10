@@ -6,9 +6,11 @@
     {% for post in user.posts %}
     <li class="list-group-item">
         {{ post.data }}
-        <button type="button" class="close" onClick="deletePost({{ post.id }})">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <form action ='/dashboard/{{username}}/' method="POST">
+            <a href="/dashboard/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
+        </form>
+        
+        
     </li>
     {% endfor %}
 </ul>
