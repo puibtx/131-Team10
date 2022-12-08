@@ -91,7 +91,7 @@ def showfollowing(username):
     user = User.query.filter_by(username=username).first()
     return render_template('following.html',users=user.following())
 
-
+#lmao
 # @views.route("/home/<username>/followed")
 # @login_required
 # def search():
