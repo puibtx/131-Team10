@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
 
-    <title>{% block title %} Base {% endblock %}</title>
+    <title>{% block title %} {{username}}'s feed {% endblock %}</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,16 +29,37 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#"
-            >Home <span class="sr-only">(current)</span></a
+          {% block navbaritems %}
+          <a class="nav-item nav-link active" href={{url_for('routes.feed', username=username)}}
+            >Home <span class="sr-only"></span></a
           >
+          <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}>profile</a>
           
+<<<<<<< HEAD:teamProject/app/templates/index.html
           <a class="nav-item nav-link" href='/home/profile'>Profile</a>
+=======
+>>>>>>> 0ded700ac31e61493f2538aac5d69269e13e0e3e:teamProject/app/templates/feed.html
           <a class="nav-item nav-link" href='#'>post</a>
           <a class="nav-item nav-link" href='#'>messages</a>
-          <a class="nav-item nav-link" href={{url_for('auth.logout')}}>sign out</a>
-          <a class="nav-item nav-link disabled" href='#'>delete</a>
           
+          
+          
+          <form method="POST" action="" class="d-flex">
+            
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+            <button type="submit" class="btn btn-outline-success">search</button>
+          </form>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+  
+        </ul>
+          {% endif %}
+          {% endwith %}
+          {%endblock%}
         </div>
       </div>
     </nav>

@@ -1,5 +1,12 @@
 from . import db
 from flask_login import UserMixin
+from sqlalchemy.sql import func
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    data = db.Column(db.String(250))
+    date = db.Column(db.DateTime(timezone=True), default = func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class User(db.Model, UserMixin):
@@ -9,6 +16,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(15), index=True)
     last_name = db.Column(db.String(15), index=True)
     password = db.Column(db.String(100))
+    posts = db.relationship('Post')
 
     def get_username(self):
         return self.username

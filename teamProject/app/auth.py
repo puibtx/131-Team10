@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .forms import LoginForm, SignupForm
+from .forms import LoginForm, SignupForm, SearchForm
 from .models import User
 from . import db
 from flask_login import logout_user, login_required, login_user
@@ -21,9 +21,8 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         if user and check_password_hash(user.password, password):
-
             login_user(user, remember=remember)
-            return redirect(url_for('routes.user_home', username=user.get_username()))
+            return redirect(url_for('routes.feed', username=user.get_username()))
         else:
             flash('invalid email or password!', category='error')
     return render_template("signin.html", form=form)
@@ -44,22 +43,31 @@ def signup():
         email = request.form.get('email')
         #first_name = request.form.get('firstName')
         #last_name = request.form.get('lastName')
-        username = request.form.get('username')
+
         password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
-        if not user:
 
-            user = User(email=email,
-                        username=username, password=generate_password_hash(password, method='sha512'))
-            db.session.add(user)
-            db.session.commit()
-            flash('Success! welcome', category='success')
-            return redirect(url_for('auth.login'))
+        if not user:
+            check_username = User.query.filter_by(
+                username=request.form.get('username')).first()
+            if check_username:
+                flash('Username already exists', category='error')
+            else:
+                username = request.form.get('username')
+                user = User(email=email,
+                            username=username, password=generate_password_hash(password, method='sha512'))
+                db.session.add(user)
+                db.session.commit()
+                flash('Success! welcome', category='success')
+                return redirect(url_for('auth.login'))
 
         else:
             flash('User already exists', category='error')
 
     return render_template("signup.html", form=form)
+<<<<<<< HEAD
     
 	
+=======
+>>>>>>> 0ded700ac31e61493f2538aac5d69269e13e0e3e
