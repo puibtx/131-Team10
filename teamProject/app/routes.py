@@ -50,15 +50,10 @@ def post(username):
 @login_required
 def deletePost(id, username):
     deleted_post = Post.query.get_or_404(id)
+    db.session.delete(deleted_post)
+    db.session.commit()
     
-    try:
-        db.session.delete(deleted_post)
-        db.session.commit()
-        return redirect('/dashboard/<username>/post')
-
-    except:
-         return "Couldn't delete post"
-
+    return render_template('post.html', username=username, user=current_user)
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
