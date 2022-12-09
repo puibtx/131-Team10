@@ -1,0 +1,22 @@
+{% extends 'home.html' %} {% block title %} Search User {% endblock %} {%block
+search%}
+
+<div>
+  <form method="POST" action="" class="d-flex">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      name="searched"
+    />
+    <button type="submit" class="btn btn-outline-success">search</button>
+  </form>
+</div>
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul class="flashes">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %} {% endblock %}

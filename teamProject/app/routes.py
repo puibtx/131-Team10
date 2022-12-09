@@ -68,18 +68,28 @@ def feed(username):
 @login_required
 def home(username):
 
-    return render_template('home.html', username=username)
+    return render_template('home.html', username=current_user.username)
 
 
-@views.route("/search", methods=['GET', 'POST'])
+@views.route("<username>/search", methods=['GET', 'POST'])
 @login_required
-def search():
+def search(username):
     if request.method == 'POST':
-        username = request.form.get('searched')
-        searched_user = User.query.filter_by(username=username).first()
-
-        if searched_user:
-
-            return redirect(url_for('routes.home', username=username))
+        searched_username = request.form.get('searched')
+        searched = User.query.filter_by(username=searched_username).first()
+        print(searched)
+        if searched:
+            # if user exists then we can redirect to that users home page
+            return redirect(url_for('routes.searched_home', username=current_user.username, searched=searched_username))
         else:
+
             flash('user does not exist.', category='error')
+
+    return render_template('search.html', username=current_user.username)
+
+
+@ views.route('/home/<username>/<searched>', methods=['GET', 'POST'])
+@ login_required
+def searched_home(username, searched):
+
+    return render_template('searched.html', username=current_user.username, searched=searched)
