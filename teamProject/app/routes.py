@@ -5,8 +5,13 @@ from .models import User, Post
 from . import db
 import json
 
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_socketio import SocketIO, join_room, leave_room, emit
+from flask_session import Session
+
 views = Blueprint('routes', __name__)
 
+socketio = SocketIO(views, manage_session = False)
 
 @views.route('/delete')
 @login_required
@@ -69,16 +74,6 @@ def feed(username):
 def home(username):
 
     return render_template('home.html', username=username)
-<<<<<<< HEAD
-    
-    
-
-@views.route('/home/profile', methods=['GET', 'POST'])
-@login_required
-def user_profile():
-    return render_template('profile.html')  
-  
-=======
 
 
 @views.route("/search", methods=['GET', 'POST'])
@@ -93,4 +88,41 @@ def search():
             return redirect(url_for('routes.home', username=username))
         else:
             flash('user does not exist.', category='error')
->>>>>>> 0ded700ac31e61493f2538aac5d69269e13e0e3e
+            
+@views.route('/home/chat', methods=['GET', 'POST'])
+def chat():
+    if(request.method=='POST'):
+        username = request.form['username']
+        room = request.form['room']
+        #Store the data in session
+        session['username'] = username
+        session['room'] = room
+        return render_template('chat.html', session = session)
+    else:
+        if(session.get('username') is not None):
+            return render_template('chat.html', session = session)
+        else:
+            return redirect(url_for('feed'))
+
+@socketio.on('join', namespace='/chat')
+def join(message):
+    room = session.get('room')
+    join_room(room)
+    emit('status', {'msg':  session.get('username') + ' has entered the room.'}, room=room)
+
+
+@socketio.on('text', namespace='/chat')
+def text(message):
+    room = session.get('room')
+    emit('message', {'msg': session.get('username') + ' : ' + message['msg']}, room=room)
+
+
+@socketio.on('left', namespace='/chat')
+def left(message):
+    room = session.get('room')
+    username = session.get('username')
+    leave_room(room)
+    session.clear()
+    emit('status', {'msg': username + ' has left the room.'}, room=room)
+    
+   
