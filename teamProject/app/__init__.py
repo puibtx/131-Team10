@@ -51,7 +51,7 @@ def build_app():
     #     u2 = User(username='susan1123', email='susan1231@example.com')
     #     u3 = User(username='mary1123', email='mary1231@example.com')
     #     u4 = User(username='david1123', email='david1231@example.com')
-    #     u5 = User(username='puibtx', email='puibtx@gmail.com',password=generate_password_hash('abc918536', method='sha512'))
+    #     u5 = User(username='puibtx', email='puibtx@gmail.com',password=generate_password_hash('1234567', method='sha512'))
     #     db.session.add_all([u1, u2, u3, u4, u5])
     #     db.session.commit()
     #     u5.follow(u1)  # john follows susan
