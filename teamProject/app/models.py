@@ -31,3 +31,6 @@ class User(db.Model, UserMixin):
 
     def get_posts(self):
         return self.posts
+
+    def get_bio(self):
+        return self.bio

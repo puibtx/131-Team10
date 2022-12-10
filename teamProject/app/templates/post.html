@@ -1,36 +1,37 @@
-{% extends "feed.html" %} {% block title %} Make a Post {% endblock %} 
-{% block post %}
+{% extends "home.html" %} {% block title %} Make a Post {% endblock %} {% block
+display %}
 <h1 align="center">Posts</h1>
 
-<ul class="list-group list-group-flush" id="posts">
-    {% for post in user.posts %}
-    <li class="list-group-item">
-        {{ post.data }}
-        <form action ='/dashboard/{{username}}/' method="POST">
-            <a href="/dashboard/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
-        </form>
-        
-        
-    </li>
-    {% endfor %}
-</ul>
-<form method="POST">
-  <textarea name="post" id="post" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Post</button>
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-light text-black-50" style="border-radius: 1rem">
+        <div class="card-body p-5 text-center">
+          <div class="mt-md-4 pb-5">
+            <form method="POST">
+              <textarea
+                name="post"
+                id="post"
+                class="form-control"
+                rows="10"
+              ></textarea>
+              <br />
+              <div align="center">
+                <button type="submit" class="btn btn-outline-success">
+                  Add Post
+                </button>
+              </div>
+            </form>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class="flashes">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %} {% endwith %} {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</form>
-
-<p class="text-white-50">
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-
-    </ul>
-      {% endif %}
-      {% endwith %}</p>  
-    {% endblock %}
+</div>

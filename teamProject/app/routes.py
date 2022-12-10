@@ -25,7 +25,7 @@ def delete():
         flash('failed to delete account')
 
 
-@views.route('/dashboard/<username>/post', methods=['GET', 'POST'])
+@views.route('/home/<username>/post', methods=['GET', 'POST'])
 @login_required
 def post(username):
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def post(username):
     return render_template('post.html', user=current_user, username=username)
 
 
-@views.route('/dashboard/<username>/delete-post/<int:id>')
+@views.route('/home/<username>/delete-post/<int:id>')
 @login_required
 def deletePost(id, username):
     deleted_post = Post.query.get_or_404(id)
@@ -60,15 +60,15 @@ def feed(username):
 
 
 @views.route('/home/<username>/', methods=['GET', 'POST'])
-@views.route('/visiting/<username>/<other_user>', methods=['GET', 'POST'])
 @login_required
-def home(username, other_user=None):
-    if other_user:
+def home(username):
 
-        render_template(
-            'home.html', username=current_user.username, other_user=other_user)
+    print('here')
+    user = User.query.filter_by(username=current_user.username).first()
+    bio = user.get_bio()
+    posts = user.get_posts()
 
-    return render_template('home.html', username=current_user.username)
+    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts)
 
 
 @views.route("/home/<username>/search", methods=['GET', 'POST'])
@@ -77,12 +77,25 @@ def search(username):
     if request.method == 'POST':
         searched_username = request.form.get('searched')
         searched = User.query.filter_by(username=searched_username).first()
-        print(searched)
+
         if searched:
             # if user exists then we can redirect to that users home page
-            return redirect(url_for('routes.home', username=current_user.username, searched=searched_username))
+            return redirect(url_for('routes.visiting', username=current_user.username, other_user=searched_username))
         else:
 
             flash('user does not exist.', category='error')
 
     return render_template('search.html', username=current_user.username)
+
+
+@views.route('/visiting/<username>/<other_user>', methods=['GET', 'POST'])
+@login_required
+def visiting(username, other_user):
+    if other_user:
+        print(other_user)
+        user = User.query.filter_by(username=other_user).first()
+        bio = user.get_bio()
+        posts = user.get_posts()
+
+        return render_template(
+            'home.html', username=current_user.username, other_user=other_user, userhome=other_user, bio=bio, posts=posts)
