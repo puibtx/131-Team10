@@ -64,14 +64,19 @@ def feed(username):
     return render_template('feed.html', username=username)
 
 
-@views.route('/home/<username>', methods=['GET', 'POST'])
+@views.route('/home/<username>/', methods=['GET', 'POST'])
+@views.route('/visiting/<username>/<other_user>', methods=['GET', 'POST'])
 @login_required
-def home(username):
+def home(username, other_user=None):
+    if other_user:
+
+        render_template(
+            'home.html', username=current_user.username, other_user=other_user)
 
     return render_template('home.html', username=current_user.username)
 
 
-@views.route("<username>/search", methods=['GET', 'POST'])
+@views.route("/home/<username>/search", methods=['GET', 'POST'])
 @login_required
 def search(username):
     if request.method == 'POST':
@@ -80,16 +85,9 @@ def search(username):
         print(searched)
         if searched:
             # if user exists then we can redirect to that users home page
-            return redirect(url_for('routes.searched_home', username=current_user.username, searched=searched_username))
+            return redirect(url_for('routes.home', username=current_user.username, searched=searched_username))
         else:
 
             flash('user does not exist.', category='error')
 
     return render_template('search.html', username=current_user.username)
-
-
-@ views.route('/home/<username>/<searched>', methods=['GET', 'POST'])
-@ login_required
-def searched_home(username, searched):
-
-    return render_template('searched.html', username=current_user.username, searched=searched)

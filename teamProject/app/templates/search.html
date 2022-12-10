@@ -1,22 +1,37 @@
 {% extends 'home.html' %} {% block title %} Search User {% endblock %} {%block
 search%}
 
-<div>
-  <form method="POST" action="" class="d-flex">
-    <input
-      class="form-control me-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-      name="searched"
-    />
-    <button type="submit" class="btn btn-outline-success">search</button>
-  </form>
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-light text-black-50" style="border-radius: 1rem">
+        <div class="card-body p-5 text-center">
+          <div class="mb-md-5 mt-md-4 pb-5">
+            <h5>Please enter username</h5>
+            <form method="POST" action="">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                name="searched"
+              />
+              <div class="mb-md-5 mt-md-4">
+                <button type="submit" class="btn btn-outline-success">
+                  search
+                </button>
+              </div>
+            </form>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class="flashes">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %} {% endwith %} {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-{% with messages = get_flashed_messages() %} {% if messages %}
-<ul class="flashes">
-  {% for message in messages %}
-  <li>{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %} {% endwith %} {% endblock %}

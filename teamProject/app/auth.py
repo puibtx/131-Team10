@@ -22,7 +22,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user, remember=remember)
-            return redirect(url_for('routes.feed', username=user.get_username()))
+            return redirect(url_for('routes.home', username=user.get_username()))
         else:
             flash('invalid email or password!', category='error')
     return render_template("signin.html", form=form)
