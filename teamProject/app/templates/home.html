@@ -15,7 +15,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -30,17 +30,15 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
 
-        <a class="nav-item nav-link" href={{url_for('routes.feed', username=username)}}
-          >Home <span class="sr-only"></span></a
-        >
-        <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}>profile</a>
         
-        <a class="nav-item nav-link" href='#'>post</a>
-        <a class="nav-item nav-link" href='#'>messages</a>
+        <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}>Profile</a>
+        
+        <a class="nav-item nav-link" href='#'>Post</a>
+        <a class="nav-item nav-link" href='#'>Messages</a>
         <a class="nav-item nav-link" href={{url_for('auth.logout')}}>sign out</a>
         
         <a type="button" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          delete account
+          Delete account
         </a>
         
         <!-- Modal -->
@@ -64,7 +62,7 @@
 
 
         <a type="button" class="nav-item nav-link" href={{url_for('routes.search', username=username)}}>
-          search
+          Search
         </a>
       
       </div>
