@@ -33,7 +33,7 @@
         
         <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}>Profile</a>
         
-        <a class="nav-item nav-link" href='#'>Post</a>
+        <a class="nav-item nav-link" href='{{url_for('routes.post', username=username)}}'>Post</a>
         <a class="nav-item nav-link" href='#'>Messages</a>
         <a class="nav-item nav-link" href={{url_for('auth.logout')}}>sign out</a>
         

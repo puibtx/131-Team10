@@ -1,24 +1,36 @@
-{% extends 'home.html' %} {% block title %} Post {% endblock %}
-{% block navbar_items%} {% endblock %}
-
-{% block content %}
-
+{% extends "feed.html" %} {% block title %} Make a Post {% endblock %} 
+{% block post %}
 <h1 align="center">Posts</h1>
+
 <ul class="list-group list-group-flush" id="posts">
-  {% for post in user.posts %}
-  <li class="list-group-item">
-    {{ post.data }}
-    <button type="button" class="close" onClick="deletePost({{ post.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
+    {% for post in user.posts %}
+    <li class="list-group-item">
+        {{ post.data }}
+        <form action ='/dashboard/{{username}}/' method="POST">
+            <a href="/dashboard/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
+        </form>
+        
+        
+    </li>
+    {% endfor %}
 </ul>
 <form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
+  <textarea name="post" id="post" class="form-control"></textarea>
   <br />
   <div align="center">
     <button type="submit" class="btn btn-primary">Add Post</button>
   </div>
 </form>
-{% endblock %}
+
+<p class="text-white-50">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+
+    </ul>
+      {% endif %}
+      {% endwith %}</p>  
+    {% endblock %}

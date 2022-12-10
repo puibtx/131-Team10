@@ -32,29 +32,24 @@ def post(username):
         post = request.form.get('post')
 
         if len(post) > 250:
-            flash('Text up to 250 characters', category='error')
+            flash('Text no more than 250 characters!', category='error')
         else:
             new_post = Post(data=post, user_id=current_user.id)
             db.session.add(new_post)
             db.session.commit()
             flash('Post uploaded', category='success')
-            return redirect(url_for('routes.home'))
 
-    return render_template('home.html', user=current_user)
+    return render_template('post.html', user=current_user, username=username)
 
 
-@views.route('/delete-post', methods=['POST'])
+@views.route('/dashboard/<username>/delete-post/<int:id>')
 @login_required
-def deletePost():
-    post = json.loads(request.data)
-    postId = post['postId']
-    post = Post.query.get(postId)
-    if post:
-        if post.user_id == current_user.id:
-            db.session.delete(post)
-            db.session.commit()
+def deletePost(id, username):
+    deleted_post = Post.query.get_or_404(id)
+    db.session.delete(deleted_post)
+    db.session.commit()
 
-    return jsonify({})
+    return render_template('post.html', username=username, user=current_user)
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
