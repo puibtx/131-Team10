@@ -62,8 +62,6 @@ def feed(username):
 @views.route('/home/<username>/', methods=['GET', 'POST'])
 @login_required
 def home(username):
-
-    print('here')
     user = User.query.filter_by(username=current_user.username).first()
     bio = user.get_bio()
     posts = user.get_posts()
