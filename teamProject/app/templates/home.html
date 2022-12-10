@@ -42,6 +42,7 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
             <button type="submit" class="btn btn-outline-success">search</button>
         </form>
+        <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul class=flashes>

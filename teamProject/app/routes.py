@@ -67,8 +67,8 @@ def feed(username):
 @views.route('/home/<username>', methods=['GET', 'POST'])
 @login_required
 def home(username):
-
-    return render_template('home.html', username=username)
+    user = User.query.filter_by(username=username).first()
+    return render_template('home.html', user=user)
 
 
 @views.route("/search", methods=['GET', 'POST'])
@@ -83,3 +83,34 @@ def search():
             return redirect(url_for('routes.home', username=username))
         else:
             flash('user does not exist.', category='error')
+
+# @views.route("/home/<username>/followers>")
+# @login_required
+# def showfollowers(username):
+#     user = User.query.filter_by(username=username).first()
+#     followers = user.follower
+
+#     return render_template('followers.html',users=followers)
+
+
+@views.route("/home/<username>/followers")
+@login_required
+def showfollowers(username):
+    user = User.query.filter_by(username=username).first()
+    followers_ = user.followers
+    return render_template('followers.html', users=followers_)
+
+
+@views.route("/home/<username>/following")
+@login_required
+def showfollowing(username):
+    user = User.query.filter_by(username=username).first()
+    following = user.followed
+    # return render_template('following.html', username=username)
+    return render_template('following.html', users=following)
+
+# lmao
+# @views.route("/home/<username>/followed")
+# @login_required
+# def search():
+#     if request.method == 'POST':
