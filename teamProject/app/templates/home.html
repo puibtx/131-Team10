@@ -11,7 +11,7 @@
     crossorigin="anonymous"
   />
 
-  <title>{% block title %} {{username}}'s Home {% endblock %}</title>
+  <title>{% block title %} {{userhome}}'s Home {% endblock %}</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,16 +38,17 @@
         <a class="nav-item nav-link" href={{url_for('routes.search', username=username)}}>
           Search
         </a>
+        <!--dropdown-->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             User Settings
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Update Account</a></li>
-            <li><a class="dropdown-item" href={{url_for('auth.logout')}}>sign out</a></li>
+            <li><a class="dropdown-item" href={{url_for('auth.logout')}}>Sign out</a></li>
             
             <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            delete account
+            elete account
             </a></li>
             
             
@@ -55,8 +56,6 @@
 
           </ul>
         </li>
-
-
         <!--end dropdown-->
         
         
@@ -97,7 +96,26 @@
   {%block display%}
   <div class="col-md-6 px-0">
     <h1 class="display-4">{{userhome}}</h1>
-    <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+    {% if username != userhome %}
+    
+    
+    <form method='POST' >
+      {% if following %}
+      
+            
+              <button type="submit" class="btn btn-outline-primary active" autocomplete="off">Following</button>
+              
+            
+          
+      {% else %}
+      
+              <button type="submit" class="btn btn-outline-primary" autocomplete="off">Follow</button>
+          
+      {% endif %}
+    </form>
+    {% endif %}
+  
+    <!--list user followers here-->
     <p class="lead my-3">{{bio}}</p>
     
   </div>
@@ -106,7 +124,7 @@
         {% for post in posts %}
         <li class="list-group-item">
             {{ post.data }}
-            {%if username == userhomer %}
+            {%if username == userhome %}
             <form action ='/home/{{username}}/' method="POST">
                 <a href="/home/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
             </form>
@@ -115,6 +133,13 @@
       </ul>
   </div>
   {% endblock %}
+  {% with messages = get_flashed_messages() %} {% if messages %}
+            <ul class="flashes">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %} {% endwith %} 
 
 
   <script

@@ -8,7 +8,7 @@ from flask_login import LoginManager
 #database is created
 db = SQLAlchemy()
 
-DB_NAME = "testing3.db"
+DB_NAME = "app.db"
 
 
 def build_app():

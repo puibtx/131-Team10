@@ -77,7 +77,11 @@ def search(username):
         searched = User.query.filter_by(username=searched_username).first()
 
         if searched:
-            # if user exists then we can redirect to that users home page
+            current = User.query.filter_by(
+                username=current_user.username).first()
+            following = current.is_following(searched)
+            print(following)
+        # if user exists then we can redirect to that users home page
             return redirect(url_for('routes.visiting', username=current_user.username, other_user=searched_username))
         else:
 
@@ -89,17 +93,35 @@ def search(username):
 @views.route('/visiting/<username>/<other_user>', methods=['GET', 'POST'])
 @login_required
 def visiting(username, other_user):
-    if other_user:
-        print(other_user)
-        user = User.query.filter_by(username=other_user).first()
-        bio = user.get_bio()
-        posts = user.get_posts()
 
-        return render_template(
-            'home.html', username=current_user.username, other_user=other_user, userhome=other_user, bio=bio, posts=posts)
+    other_user = User.query.filter_by(username=other_user).first()
+    current = User.query.filter_by(username=current_user.username).first()
+    if request.method == 'POST':
+        follow(current, other_user)
+        return redirect(url_for('routes.visiting', username=current_user.username, other_user=other_user.get_username()))
+    other_username = other_user.get_username()
+    bio = other_user.get_bio()
+    posts = other_user.get_posts()
+    following = current.is_following(other_user)
+    return render_template(
+        'home.html', username=current_user.username, other_user=other_user, userhome=other_username, bio=bio, posts=posts, following=following)
 
 
-@views.route("/home/<username>/followers")
+def follow(current, other_user):
+
+    if not current.is_following(other_user):
+        # user toggle button and resulted in a following
+        current_user.follow(other_user)
+        db.session.commit()
+        flash(f'followed ')
+
+    else:
+        current_user.unfollow(other_user)
+        db.session.commit()
+        flash(f'Unfollowed')
+
+
+@views.route("/<username>/followers")
 @login_required
 def showfollowers(username):
     user = User.query.filter_by(username=username).first()
@@ -107,7 +129,7 @@ def showfollowers(username):
     return render_template('followers.html', users=followers_)
 
 
-@views.route("/home/<username>/following")
+@views.route("/<username>/following")
 @login_required
 def showfollowing(username):
     user = User.query.filter_by(username=username).first()
