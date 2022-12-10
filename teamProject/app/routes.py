@@ -84,14 +84,28 @@ def search():
         else:
             flash('user does not exist.', category='error')
 
+# @views.route("/home/<username>/followers>")
+# @login_required
+# def showfollowers(username):
+#     user = User.query.filter_by(username=username).first()
+#     followers = user.follower
+
+#     return render_template('followers.html',users=followers)
+
+@views.route("/home/<username>/followers")
+@login_required
+def showfollowers(username):
+    user = User.query.filter_by(username=username).first()
+    followers_ = user.followers
+    return render_template('followers.html',users=followers_)
 
 @views.route("/home/<username>/following")
 @login_required
 def showfollowing(username):
-    # user = User.query.filter_by(username=username).first()
-    # following = user.followed
-    return render_template('following.html', username=username)
-    # return render_template('following.html',users=following)
+    user = User.query.filter_by(username=username).first()
+    following = user.followed
+    # return render_template('following.html', username=username)
+    return render_template('following.html',users=following)
 
 #lmao
 # @views.route("/home/<username>/followed")
