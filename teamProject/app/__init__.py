@@ -4,6 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from os import path
 from flask_login import LoginManager
+from .forms import SearchForm
+
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_socketio import SocketIO, join_room, leave_room, emit
+from flask_session import Session
+
 
 #database is created
 db = SQLAlchemy()
@@ -14,8 +20,15 @@ DB_NAME = "app.db"
 def build_app():
     myapp = Flask(__name__)
     myapp.config["SECRET_KEY"] = 'TEAM-10-ROCKS-XD'
+    myapp.config['SESSION_TYPE'] = 'filesystem'
     from .routes import views
     from .auth import auth
+
+    # session and chat contents
+    Session(views)
+    socketio = SocketIO(myapp, manage_session=False)
+    wsgi_app = myapp.wsgi_app
+    socketio.run(myapp)
 
     # configured database
     myapp.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
