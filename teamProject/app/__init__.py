@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from os import path
 from flask_login import LoginManager
+# from werkzeug.security import generate_password_hash, check_password_hash
 
 #database is created
 db = SQLAlchemy()
@@ -47,10 +48,10 @@ def build_app():
     #     u5 = User(username='puibtx', email='puibtx@gmail.com',password=generate_password_hash('1234567', method='sha512'))
     #     db.session.add_all([u1, u2, u3, u4, u5])
     #     db.session.commit()
-    #     u5.follow(u1)  # john follows susan
+    #     u5.follow(u1)  
     #     u5.follow(u2)
-    #     u5.follow(u3)  # john follows david
-    #     u5.follow(u4)  # john follows david
+    #     u5.follow(u3)  
+    #     u5.follow(u4)  
 
     #     u1.follow(u5)
     #     u2.follow(u5)

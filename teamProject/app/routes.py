@@ -65,8 +65,9 @@ def home(username):
     user = User.query.filter_by(username=current_user.username).first()
     bio = user.get_bio()
     posts = user.get_posts()
+    
 
-    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts)
+    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts,user=user)
 
 
 @views.route("/home/<username>/search", methods=['GET', 'POST'])
@@ -103,8 +104,9 @@ def visiting(username, other_user):
     bio = other_user.get_bio()
     posts = other_user.get_posts()
     following = current.is_following(other_user)
+    
     return render_template(
-        'home.html', username=current_user.username, other_user=other_user, userhome=other_username, bio=bio, posts=posts, following=following)
+        'home.html', username=current_user.username, other_user=other_user, userhome=other_username, bio=bio, posts=posts, following=following,user=other_user)
 
 
 def follow(current, other_user):
@@ -126,7 +128,7 @@ def follow(current, other_user):
 def showfollowers(username):
     user = User.query.filter_by(username=username).first()
     followers_ = user.followers
-    return render_template('followers.html', users=followers_)
+    return render_template('followers.html',current_user=user , users=followers_)
 
 
 @views.route("/<username>/following")
@@ -135,4 +137,4 @@ def showfollowing(username):
     user = User.query.filter_by(username=username).first()
     following = user.followed
     # return render_template('following.html', username=username)
-    return render_template('following.html', users=following)
+    return render_template('following.html',current_user=user , users=following)

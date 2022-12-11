@@ -1,0 +1,31 @@
+<!-- <div class="jumbotron">
+    <h2 style="text-align: center;">User list</h2>
+    {% for user in users%}
+          <a>{{user.username}}</a>
+    {% endfor %}
+  </div> -->
+
+
+
+
+<!-- <div class="jumbotron">
+  <h2 style="text-align: center;">These people are following you:</h2>
+  {% for user in users%}
+        <a href="{{url_for('routes.visiting',username=current_user.username, other_user=user.username)}}">{{user.username}}</a>
+  {% endfor %}
+</div> -->
+
+
+<!-- <div class="list-group">
+    <h2 style="text-align: center;">These users are following you:</h2>
+    {% for user in users%}
+          <a href="{{ url_for('routes.visiting',username=current_user.username, other_user=user.username)}}" class="list-group-item list-group-item-action">{{user.username}}</a>
+    {% endfor %}
+</div> -->
+
+<div class="list-group">
+    <h2 style="text-align: center;">These users are following you:</h2>
+      {% for user in users%}
+            <a href="{{ url_for('routes.visiting',username=current_user.username, other_user=user.username)}}" class="list-group-item list-group-item-action">{{user.username}}</a>
+      {% endfor %}
+    </div>
