@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from .forms import SignupForm
 import uuid as uuid
-import config as Config
+import config
 import os
 import pathlib
 
