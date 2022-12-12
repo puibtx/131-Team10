@@ -2,28 +2,6 @@
 display %}
 <h1 align="center">Posts</h1>
 
-<<<<<<< HEAD
-<ul class="list-group list-group-flush" id="posts">
-    {% for post in user.posts %}
-    <li class="list-group-item">
-        {{ post.data }}
-        <form method="POST">
-            <div style="width:1280px;" align="right">
-                <a href='/dashboard/{{username}}/post/delete-post/{{post.id}}' class="btn btn-outline-danger btn-sm">Delete</a>
-            </div>
-            
-        </form>
-        
-        
-    </li>
-    {% endfor %}
-</ul>
-<form method="POST">
-  <textarea name="post" id="post" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Post</button>
-=======
 <div class="container py-5 h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -48,7 +26,6 @@ display %}
         </div>
       </div>
     </div>
->>>>>>> de7bd10c74eb0479034241b62cb8319284d77997
   </div>
 </div>
 

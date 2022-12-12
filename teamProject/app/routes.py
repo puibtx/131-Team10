@@ -50,20 +50,6 @@ def post(username):
     return render_template('post.html', user=current_user, username=username)
 
 
-<<<<<<< HEAD
-@views.route('/dashboard/<username>/post/delete-post/<int:id>')
-@login_required
-def deletePost(id, username):
-    deleted_post = Post.query.get_or_404(id)
-    try:
-        db.session.delete(deleted_post)
-        db.session.commit()
-        flash("Deleted Post. To post again, go to 'post' in nav bar")
-        return render_template('deletePost.html', user=current_user, username=username)
-    except:
-        return 'Could not delete post'
-    
-=======
 @views.route('/home/<username>/delete-post/<int:id>')
 @login_required
 def deletePost(id, username):
@@ -72,7 +58,6 @@ def deletePost(id, username):
     db.session.commit()
 
     return redirect(url_for('routes.home', username=username))
->>>>>>> de7bd10c74eb0479034241b62cb8319284d77997
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
