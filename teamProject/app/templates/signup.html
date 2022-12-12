@@ -9,18 +9,6 @@ content %}
   <br />
 
   <!--first name label-->
-  <p class="text-white-50">
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-
-    </ul>
-      {% endif %}
-      {% endwith %}
-    </p>
 
   <div class="form-outline form-white mb-10">
     {{ form.email.label(class = "form-label", style = "float: left") }} {{
@@ -54,6 +42,14 @@ content %}
     </ul>
     {% endif %}
   </div>
+
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <ul class="flashes">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %} {% endwith %}
 
   <div class="form-group mb-10">
     {{ form.confirm.label(class = "form-label", style = "float: left") }} {{
