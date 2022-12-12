@@ -22,12 +22,23 @@
         {{ form.password(class = "form-control", size = 32)}}
     </div>
 
-    
+    {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+            
+                </ul>
+                  {% endif %}
+                  {% endwith %}
 
     <br/>
     <p>{{ form.remember_me() }}
         {{form.remember_me.label}}
     </p>
+
+    
 
     
 
@@ -47,5 +58,6 @@
     <a class="button" href="/signup">Sign Up</a>
   </p>
 </div>
+
 {% endblock %}
 

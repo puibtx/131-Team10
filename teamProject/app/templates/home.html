@@ -10,128 +10,155 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
     crossorigin="anonymous"
   />
+  <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/main.css') }}" />
 
   <title>{% block title %} {{userhome}}'s Home {% endblock %}</title>
+
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+<!--inserting new code -->
 
-        
-        <a class="nav-item nav-link" href={{url_for('routes.home', username=username)}}>Profile</a>
-        
-        <a class="nav-item nav-link" href='{{url_for('routes.post', username=username)}}'>Post</a>
-        <a class="nav-item nav-link" href='#'>Messages</a>
-        <a class="nav-item nav-link" href={{url_for('routes.search', username=username)}}>
-          Search
-        </a>
-        <!--dropdown-->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            User Settings
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Update Account</a></li>
-            <li><a class="dropdown-item" href={{url_for('auth.logout')}}>Sign out</a></li>
-            
-            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            elete account
-            </a></li>
-            
-            
-            
 
-          </ul>
-        </li>
-        <!--end dropdown-->
-        
-        
-        
+<!--inserting new code end-->
+
+<body style="background-color: #eee;">
+  
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          
+          <nav class="navbar navbar-expand-lg bg-light rounded-3 p-3 mb-4">
+            <a class="navbar-brand" href="#"></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
         
                 
-             
-          <!-- Modal -->
-          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">WARNING!</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <a class="nav-item nav-link" href="{{url_for('routes.home', username=username)}}">Profile</a>
+                
+                <a class="nav-item nav-link" href="{{url_for('routes.post', username=username)}}">Post</a>
+                
+                <a class="nav-item nav-link" href="{{url_for('routes.search', username=username)}}">
+                  Search
+                </a>
+                <!--dropdown-->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User Settings
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{url_for('routes.update', username=username)}}">Update Account</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('auth.logout')}}">Sign out</a></li>
+                    
+                    <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Delete account
+                    </a></li>
+                    
+                    
+                    
+        
+                  </ul>
+                </li>
+                <!--end dropdown-->   
+                  <!-- Modal -->
+                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">WARNING!</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to delete?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+                          <a type="button" class="btn btn-danger" href="{{url_for('routes.delete')}}">DELETE</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="modal-body">
-                  <p>Are you sure you want to delete?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
-                  <a type="button" class="btn btn-danger" href={{url_for('routes.delete')}}>DELETE</a>
-                </div>
-              </div>
-            </div>
-          </div>
+                <!--end modal-->
+        
+              </div>  
+          </nav>
         </div>
-        <!--end modal-->
-
       </div>
-      
-
-    
-  </nav>
-
-  <!--end nav-->
+  
+      <!--end nav-->
 
   <!--Content-->
   {%block display%}
-  <div class="col-md-6 px-0">
-    <h1 class="display-4">{{userhome}}</h1>
-    {% if username != userhome %}
+  <div class="col">
+    <div class="card mb-4">
+      <div class="card-body text-center">
+
+        {% if profile_pic %}
+        
+          <img src="{{url_for('static', filename='images/' + profile_pic)}}" class="rounded mx-auto d-block" alt="" width="300">
+        {% else %}
+          <img src="{{url_for('static', filename='images/default_image.png')}}" alt="" width="200">        
+        {% endif %}
+        <h5 class="my-3">{{userhome}}</h5>
+        {% if username != userhome %}
     
     
     <form method='POST' >
-      {% if following %}
-      
-            
+      {% if following %}      
               <button type="submit" class="btn btn-outline-primary active" autocomplete="off">Following</button>
-              
-            
-          
       {% else %}
-      
-              <button type="submit" class="btn btn-outline-primary" autocomplete="off">Follow</button>
-          
+              <button type="submit" class="btn btn-outline-primary" autocomplete="off">Follow</button>  
       {% endif %}
     </form>
     {% endif %}
+        <p class="text-muted mb-1">{{bio}}</p>
+        <ul>
+        
+          <li> followers </li>
+          <li> following </li>
+          
+        </ul>
+        
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
+      <div class="card mb-4">
+        <div class="card-body">
+          {% for post in posts %}
+              <li class="list-group-item ">
+                <div class="mb-5">
+                  {{ post.data }}
+                  {%if username == userhome %}
+                  <div style="display: inline-block; position: absolute;
+                  right: 0;">
+                  <form action ='/home/{{username}}/' method="POST">
+                      <a href="/home/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm" style="display: inline">Delete</a>
+                  </form>
+                  </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </ul>
+          
+          </div>
+        </div>
+      </div>  
+  </div>
+
   
-    <!--list user followers here-->
-    <p class="lead my-3">{{bio}}</p>
-    
-  </div>
-  <div>
-      <ul class="list-group list-group-flush" id="posts">
-        {% for post in posts %}
-        <li class="list-group-item">
-            {{ post.data }}
-            {%if username == userhome %}
-            <form action ='/home/{{username}}/' method="POST">
-                <a href="/home/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
-            </form>
-            {% endif %}
-        {% endfor %}
-      </ul>
-  </div>
   {% endblock %}
   {% with messages = get_flashed_messages() %} {% if messages %}
             <ul class="flashes">
@@ -142,12 +169,14 @@
             {% endif %} {% endwith %} 
 
 
+
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"
   ></script>
 </body>
+
 </html>
 
 

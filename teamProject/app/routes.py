@@ -1,17 +1,18 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, request, jsonify
+from flask import current_app, Blueprint, render_template, flash, redirect, url_for, request, jsonify
 from flask_login import login_required, current_user
+from werkzeug.utils import secure_filename
+from .forms import SignupForm
+import uuid as uuid
+import config as Config
+import os
+import pathlib
 
 from .models import User, Post
 from . import db
 import json
 
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_socketio import SocketIO, join_room, leave_room, emit
-from flask_session import Session
 
 views = Blueprint('routes', __name__)
-
-socketio = SocketIO(views, manage_session=False)
 
 
 @views.route('/delete')
@@ -44,6 +45,7 @@ def post(username):
             db.session.add(new_post)
             db.session.commit()
             flash('Post uploaded', category='success')
+            return redirect(url_for('routes.home', username=username))
 
     return render_template('post.html', user=current_user, username=username)
 
@@ -55,7 +57,7 @@ def deletePost(id, username):
     db.session.delete(deleted_post)
     db.session.commit()
 
-    return render_template('post.html', username=username, user=current_user)
+    return redirect(url_for('routes.home', username=username))
 
 
 @views.route('/feed/<username>', methods=['GET', 'POST'])
@@ -71,8 +73,9 @@ def home(username):
     user = User.query.filter_by(username=current_user.username).first()
     bio = user.get_bio()
     posts = user.get_posts()
+    profile_pic = user.get_pic()
 
-    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts)
+    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts, profile_pic=profile_pic)
 
 
 @views.route("/home/<username>/search", methods=['GET', 'POST'])
@@ -108,9 +111,10 @@ def visiting(username, other_user):
     other_username = other_user.get_username()
     bio = other_user.get_bio()
     posts = other_user.get_posts()
+    profile_pic = other_user.get_pic()
     following = current.is_following(other_user)
     return render_template(
-        'home.html', username=current_user.username, other_user=other_user, userhome=other_username, bio=bio, posts=posts, following=following)
+        'home.html', username=current_user.username, userhome=other_username, bio=bio, posts=posts, following=following, profile_pic=profile_pic)
 
 
 def follow(current, other_user):
@@ -144,41 +148,46 @@ def showfollowing(username):
     return render_template('following.html', users=following)
 
 
-@views.route('/home/chat', methods=['GET', 'POST'])
-def chat():
-    if (request.method == 'POST'):
-        username = request.form['username']
-        room = request.form['room']
-        # Store the data in session
-        session['username'] = username
-        session['room'] = room
-        return render_template('chat.html', session=session)
-    else:
-        if (session.get('username') is not None):
-            return render_template('chat.html', session=session)
-        else:
-            return redirect(url_for('feed'))
+@views.route('/update-info/<username>', methods=['GET', 'POST'])
+@login_required
+def update(username):
+    form = SignupForm()
+    update_user = User.query.filter_by(
+        username=current_user.username).first()
 
+    if request.method == 'POST':
 
-@socketio.on('join', namespace='/chat')
-def join(message):
-    room = session.get('room')
-    join_room(room)
-    emit('status', {'msg':  session.get('username') +
-         ' has entered the room.'}, room=room)
+        update_user.username = request.form.get('username')
+        update_user.update_bio(request.form.get('bio'))
+        if request.files['profile_pic']:
+            print('profile_pic')
 
+            update_user.profile_pic = request.files['profile_pic']
 
-@socketio.on('text', namespace='/chat')
-def text(message):
-    room = session.get('room')
-    emit('message', {'msg': session.get('username') +
-         ' : ' + message['msg']}, room=room)
+            # update_user.profile_pic = request.files['profile_pic']
+            pic_filename = secure_filename(update_user.profile_pic.filename)
+            # create a random name
+            pic_name = str(uuid.uuid1()) + "_" + pic_filename
+            # save pic at location in init
 
+            # save profile_pic string
+            update_user.profile_pic = pic_name
 
-@socketio.on('left', namespace='/chat')
-def left(message):
-    room = session.get('room')
-    username = session.get('username')
-    leave_room(room)
-    session.clear()
-    emit('status', {'msg': username + ' has left the room.'}, room=room)
+            save_file = request.files['profile_pic']
+            try:
+
+                db.session.commit()
+
+                save_file.save(os.path.join(
+                    current_app.config['UPLOAD_FOLDER'], pic_name))
+
+                flash('update changed')
+
+                return redirect(url_for('routes.home', username=username))
+            except OSError as err:
+                print("OS error:", err)
+                flash('fail')
+                return render_template('update.html', username=username, form=form, update_user=update_user)
+        db.session.commit()
+        return redirect(url_for('routes.home', username=username))
+    return render_template('update.html', username=username, form=form,  update_user=update_user, bio=update_user.get_bio())
