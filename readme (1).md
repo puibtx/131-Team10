@@ -1,12 +1,12 @@
 # Team 10 Website Project
 
 ## :fog: Table of Contents
-- [The Team](https://github.com/puibtx/131-Team10/edit/master/readme%20(1).md#the-team)
-- [Introduction](https://github.com/puibtx/131-Team10/edit/master/readme%20(1).md#introduction)
-- [List of Features](https://github.com/puibtx/131-Team10/edit/master/readme%20(1).md#list-of-features)
-- [List of Technologies Used](https://github.com/puibtx/131-Team10/edit/master/readme%20(1).md#list-of-technologies-used)
-- [Installation](https://github.com/puibtx/131-Team10/edit/master/readme%20(1).md#installation)
-- [How to Use](https://github.com/puibtx/131-Team10/edit/master/readme%20(1).md#how-to-use)
+- [The Team](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#family_man_man_boy_boythe-team)
+- [Introduction](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#deciduous_treeintroduction)
+- [List of Features](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#1st_place_medal-list-of-features)
+- [List of Technologies Used](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#abacus-list-of-technologies-used)
+- [Installation](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#hammer_and_wrench-installation)
+- [How to Use](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#rockethow-to-use)
 
 ## :family_man_man_boy_boy:	The Team
 - **Haolin Jiang (@puibtx)   - TEAM LEAD**
