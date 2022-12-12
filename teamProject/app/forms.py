@@ -1,7 +1,10 @@
 from flask_wtf import FlaskForm
+from flask_sqlalchemy import SQLAlchemy
 from wtforms import EmailField, PasswordField, BooleanField, SubmitField, StringField
 from wtforms.validators import DataRequired, EqualTo, Length
+from datetime import datetime
 
+db = SQLAlchemy()
 
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
@@ -31,3 +34,13 @@ class SignupForm(FlaskForm):
 class SearchForm(FlaskForm):
     searched = StringField('Searched', validators=[DataRequired()])
     submit = SubmitField('Submit')
+    
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Message {}>'.format(self.body)

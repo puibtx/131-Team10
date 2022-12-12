@@ -1,17 +1,21 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request, jsonify
 from flask_login import login_required, current_user
 
+from app import build_app
+
 from .models import User, Post
-from . import db
+from app import db
 import json
 
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_socketio import SocketIO, join_room, leave_room, emit
-from flask_session import Session
+from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm, \
+    MessageForm
+from app.models import User, Post, Message, Notification
+from app.translate import translate
+from app.main import bp
+
 
 views = Blueprint('routes', __name__)
 
-socketio = SocketIO(views, manage_session = False)
 
 @views.route('/delete')
 @login_required
@@ -89,40 +93,56 @@ def search():
         else:
             flash('user does not exist.', category='error')
             
-@views.route('/home/chat', methods=['GET', 'POST'])
-def chat():
-    if(request.method=='POST'):
-        username = request.form['username']
-        room = request.form['room']
-        #Store the data in session
-        session['username'] = username
-        session['room'] = room
-        return render_template('chat.html', session = session)
-    else:
-        if(session.get('username') is not None):
-            return render_template('chat.html', session = session)
-        else:
-            return redirect(url_for('feed'))
-
-@socketio.on('join', namespace='/chat')
-def join(message):
-    room = session.get('room')
-    join_room(room)
-    emit('status', {'msg':  session.get('username') + ' has entered the room.'}, room=room)
+@views.route('/send_message/<recipient>', methods=['GET', 'POST'])
+@login_required
+def send_message(recipient):
+    user = User.query.filter_by(username=recipient).first_or_404()
+    form = MessageForm()
+    if form.validate_on_submit():
+        msg = Message(author=current_user, recipient=user,
+                      body=form.message.data)
+        db.session.add(msg)
+        user.add_notification('unread_message_count', user.new_messages())
+        db.session.commit()
+        flash(_('Your message has been sent.'))
+        return redirect(url_for('routes.home', username=recipient))
+    return render_template('send_message.html', title=_('Send Message'),
+                           form=form, recipient=recipient)
 
 
-@socketio.on('text', namespace='/chat')
-def text(message):
-    room = session.get('room')
-    emit('message', {'msg': session.get('username') + ' : ' + message['msg']}, room=room)
+@views.route('/messages')
+@login_required
+def messages():
+    current_user.last_message_read_time = datetime.utcnow()
+    current_user.add_notification('unread_message_count', 0)
+    db.session.commit()
+    page = request.args.get('page', 1, type=int)
+    messages = current_user.messages_received.order_by(
+        Message.timestamp.desc()).paginate(
+            page=page, per_page=current_app.config['POSTS_PER_PAGE'],
+            error_out=False)
+    next_url = url_for('routes.messages', page=messages.next_num) \
+        if messages.has_next else None
+    prev_url = url_for('routes.messages', page=messages.prev_num) \
+        if messages.has_prev else None
+    return render_template('messages.html', messages=messages.items,
+                           next_url=next_url, prev_url=prev_url)
 
 
-@socketio.on('left', namespace='/chat')
-def left(message):
-    room = session.get('room')
-    username = session.get('username')
-    leave_room(room)
-    session.clear()
-    emit('status', {'msg': username + ' has left the room.'}, room=room)
+@views.route('/notifications')
+@login_required
+def notifications():
+    since = request.args.get('since', 0.0, type=float)
+    notifications = current_user.notifications.filter(
+        Notification.timestamp > since).order_by(Notification.timestamp.asc())
+    return jsonify([{
+        'name': n.name,
+        'data': n.get_data(),
+        'timestamp': n.timestamp
+    } for n in notifications])
+
+
+
+
     
-   
+
