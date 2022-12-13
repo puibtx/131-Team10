@@ -24,3 +24,7 @@ of Login, Logout, Delete User and Sign Up.
 ### 2022-12-06 at 19:00
 - all team members present
 - Joshua J joined the meeting call to go over what needs to be done and to also see whats finished. Talked about html files and the route python code. Will try to work on creating a new route for other ueers' profiles and to create a message database.
+
+### 2022-12-09 at ~20:00
+- Haolin J, Jose C, Nick F
+- debugging session, Haolin were having trouble to have following page working, Jose spot the wrong user were passed it, we need to create a another user to keep track, ontop of the original user pass in Nick F joined to check in on progress. 
