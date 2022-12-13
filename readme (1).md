@@ -70,9 +70,15 @@ The non-functional requirements are as listed above. Our team wants to ensure th
 
 ## :rocket:	How to Use
 
+To start up the web application, the user will need to be in the directory where **main.py** is located. They will then use the python command below to run the program.
 ```
 $python3 main.py
 
 ```
+Once the user has the web application running, the log in page will be the first page they will be in. The user is able to type into the `email` text box and `password` text box to enter their information if they have an account already. Once the text boxes are filled with the correct information, the user may click on the `login` button and will be redirected to the user home page. 
+
+If the user does not have an account in the system, the user is able to click the `create account` button located in the bottom. The user will be redirected to the create account page. The user is able to enter in their preferred username, email, and password. Once the user is done implementing the information, they may click `create account`. They are then redirected again to the login page where they can enter their credeentials and click `login` to be redirected to the user home page.
+
+Once the user is in the user home page, they will see a navigation bar located at the top of the website. This navigation bar will be the main tool that the user will use to go around and navigate around the website. 
 
 
