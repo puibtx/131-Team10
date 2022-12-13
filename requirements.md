@@ -1,30 +1,30 @@
 
 
-## Functional Requirements
+# Functional Requirements
 
 1. Login
 2. Logout
 3. Create New Account
 4. Delete Account
 5. [User home page]
-6. [Update User Information]
-7. [Post pictures/text]
-8. [Like/Dislike posts]
-9. [Delete posts]
-10. [Follow Users]
-11. [Display others' profiles]
-12. [Search Users]
+6. [Update User Information](https://github.com/puibtx/131-Team10/blob/master/requirements.md#1-update-user-information-nick)
+7. [Post pictures/text](https://github.com/puibtx/131-Team10/blob/master/requirements.md#3-post-picturestext-josh)
+8. [Like/Dislike posts](https://github.com/puibtx/131-Team10/blob/master/requirements.md#2-likedislike-posts-nick)
+9. [Delete posts](https://github.com/puibtx/131-Team10/blob/master/requirements.md#4-delete-posts-josh)
+10. [Follow Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#6-follow-user-haolin)
+11. [Display others' profiles](https://github.com/puibtx/131-Team10/blob/master/requirements.md#7-display-current-others-user-profile-haolin)
+12. [Search Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#5-search-users-jose-c)
 
-## Non-functional Requirements
+# Non-functional Requirements
 
 1. Works on Google Chrome
 2. Consistent font throughout site
 3. Text length constraint of no more than 250 characters for posts
 4. Using elements from bootstraps
 
-## Use Cases
+# Use Cases
 
-### 1. Update User Information (Nick)
+## 1. Update User Information (Nick)
 - **Pre-condition:** 
 
   1. User has logged in
@@ -52,7 +52,7 @@
   3. User leaves text box for bio empty
  
  
-### 2. Like/Dislike posts (Nick)
+## 2. Like/Dislike posts (Nick)
 - **Pre-condition:** 
  
   1. User has logged in
@@ -79,7 +79,7 @@
   3. Post is no longer liked or disliked by user
  
  
-### 3. Post pictures/text (Josh)
+## 3. Post pictures/text (Josh)
 - **Pre-condition:** 
  
   1. User has logged in
@@ -107,7 +107,7 @@
   3. Shows the character count 
  
  
-### 4. Delete posts (Josh)
+## 4. Delete posts (Josh)
 - **Pre-condition:** 
  
   1. User has logged in
@@ -133,7 +133,7 @@
   2. The user will be redirected
  
  
-### 5. Search users (Jose C.)
+## 5. Search users (Jose C.)
 - **pre-condition:**  
  
   1. User has logged in
@@ -163,7 +163,7 @@
   3. User must retry search
  
  
-### 6. Follow user (Haolin)
+## 6. Follow user (Haolin)
 - **Pre-condition:**  
  
   1. The account needs to exist 
@@ -191,7 +191,7 @@
   1. The user try to follow an account that is deleted
   2. A pop up message, or on screen display showing the user you trying to follow does not exist
 
-### 7. Display current/ others’ user profile (Haolin)
+## 7. Display current/ others’ user profile (Haolin)
 - **Pre-condition:** 
   
   1. The user needs to be logged in 
@@ -217,4 +217,31 @@
   
   1. You try to view a profile of an account that has been deleted
   2. The page will just be labeled the user does not exist or has been deleted
+
+## 8. User Home Page (Josh)
+- **Pre-condition:** 
+  
+  1. The user needs to be logged in 
+
+- **Trigger:** 
+ 
+  1. User clicks on `Profile` button
+
+- **Primary Sequence:**
+  
+  1. User will log into the webpage
+  2. User will be redirected to the user home page after clicking `profile` button
+  3. User is able to use the navbar at the top of the screen
+  4. Buttons for the navbar will redirect user to what the buttons are titled
+
+- **Primary Postconditions:** 
+ 
+  1. System will show user information: Username, Follower and following count
+
+- **Alternate Sequence:** 
+  
+  1. User clicks `home` button
+  2. User does not log in and is unable to goto user home page
+
+
 
