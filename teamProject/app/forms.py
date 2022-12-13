@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import EmailField, PasswordField, BooleanField, SubmitField, StringField
+from wtforms import EmailField, PasswordField, BooleanField, SubmitField, StringField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Length
+from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 
 class LoginForm(FlaskForm):
@@ -26,8 +27,10 @@ class SignupForm(FlaskForm):
         message='please confirm password'),
         EqualTo('password', message='Both password fields must be equal!')])
     create = SubmitField('Create Account')
+    bio = TextAreaField('about me....')
 
+    profile_pic = FileField('Profile Pic')
 
-class SearchForm(FlaskForm):
-    searched = StringField('Searched', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class UploadForm(FlaskForm):
+    image = FileField('Image')
+    

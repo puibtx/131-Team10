@@ -1,0 +1,34 @@
+{% extends "feed.html" %} {% block title %} Make a Post {% endblock %} 
+{% block post %}
+<h1 align="center">Posts</h1>
+
+<ul class="list-group list-group-flush" id="posts">
+    {% for post in user.posts %}
+    <li class="list-group-item">
+        {{ post.data }}
+        <form method="POST">
+            <div style="width:1280px;" align="right">
+                <a href='/dashboard/{{username}}/post/delete-post/{{post.id}}' class="btn btn-outline-danger btn-sm">Delete</a>
+            </div>
+            
+        </form>
+        
+        
+    </li>
+    {% endfor %}
+</ul>
+
+<p class="text-white-50">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}
+        
+      </li>
+      {% endfor %}
+
+    </ul>
+      {% endif %}
+      {% endwith %}</p>  
+    {% endblock %}
