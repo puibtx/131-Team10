@@ -42,7 +42,7 @@ An engineering solution is a process that spells out the solution requirements t
 | 11  | Display Other Users' Profiles   |         
 | 12  | Search Users                    |   
 
-The functional requiremnets are as listed above and use cases are provided through our [readme.md](https://github.com/puibtx/131-Team10/blob/master/requirements.md).
+The functional requiremnets are as listed above and use cases are provided through our [requirements.md](https://github.com/puibtx/131-Team10/blob/master/requirements.md).
 
 | **Non-Functional Requirements**                                 | 
 | --------------------------------------------------------------- | 
