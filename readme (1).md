@@ -53,7 +53,7 @@ The functional requiremnets are as listed above and use cases are provided throu
 
 The non-functional requirements are as listed above. Our team wants to ensure that the application will work on Google Chrome without any issues. The font size, color, and type will be consistent throughout the whole webpage. When creating a new post, a text box will appear and will remind the user about the text length constraint. The text length constraint will be 250 characters for posts. Last non-functional requirement is that the webpage will use elements from `Bootstraps`.
 
-## :abacus: List of Technologies Used
+## :abacus: List of Libraries Used
 
 - `Flask`
 - `FlaskForm`
