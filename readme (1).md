@@ -70,10 +70,10 @@ The non-functional requirements are as listed above. Our team wants to ensure th
 
 ## :rocket:	How to Use
 
-- [Running the Program]()
-- [Signing Up]()
-- [Creating an Account]()
-- [Navigation Bar]()
+- [Running the Program](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#running-the-program)
+- [Signing Up](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#signing-up)
+- [Creating an Account](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#creating-an-account)
+- [Navigation Bar](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#navigation-bar)
 
 ### Running the Program
 To start up the web application, the user will need to be in the directory where **main.py** is located. They will then use the python command below to run the program.
