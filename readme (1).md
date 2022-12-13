@@ -5,7 +5,7 @@
 - [Introduction](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#deciduous_treeintroduction)
 - [Ethical Implication](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#balance_scale-ethical-implication)
 - [List of Features](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#1st_place_medal-list-of-features)
-- [List of Technologies Used](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#abacus-list-of-technologies-used)
+- [List of Libraries Used](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#abacus-list-of-libraries-used)
 - [Installation](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#hammer_and_wrench-installation)
 - [How to Use](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#rockethow-to-use)
 
