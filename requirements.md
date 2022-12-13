@@ -7,7 +7,7 @@
 3. Create New Account
 4. Delete Account
 5. User home page
-6. Send message to followers/users
+6. Update User Information
 7. Post pictures/text
 8. Like/Dislike posts
 9. Delete posts
@@ -24,35 +24,39 @@
 
 ## Use Cases
 
-1. Send message to followers (Nick)
-- **Pre-condition:** User has logged in
+### 1. Update User Information (Nick)
+- **Pre-condition:** 
 
-- **Trigger:** User selects ‘message’ button and clicks ‘send’
+  1. User has logged in
+  2. User is
+
+- **Trigger:** 
+
+  1. User 
  
 - **Primary Sequence:**
   
   1. System displays the user’s inbox for messages
-  2. User may select ‘message’ under a name of another user
-  3. User has the choice of adding multiple users to the DM
-  4. User writes a message in a text-box
-  5. User sends message by selecting ‘send’
-  6. System displays the messages of received and sent
  
 - **Primary Postconditions:** 
  
-The recipient(s) gets the message from the user and may view it in their inbox for messages where they can respond.
+  1. The recipient(s) gets the message from the user and may view it in their inbox for messages where they can respond.
  
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
+- **Alternate Sequence:** 
   
   1. User clicks ‘send’
   2. System states inputted text length is too long
   3. Displays the maximum character limit in a single message
  
  
-2. Like/Dislike posts (Nick)
-- **Pre-condition:** User has logged in
+### 2. Like/Dislike posts (Nick)
+- **Pre-condition:** 
  
-- **Trigger:** User clicks like/dislike button
+  1. User has logged in
+ 
+- **Trigger:** 
+ 
+  1. User clicks like/dislike button
  
 - **Primary Sequence:**
   
@@ -61,21 +65,25 @@ The recipient(s) gets the message from the user and may view it in their inbox f
   3.  System displays the number of likes/dislikes on the post already
   4.  User can scroll to another post
  
-- **Primary Postconditions:** <can be a list or short description> 
+- **Primary Postconditions:**  
  
-Users recently inputted like/dislike will increment one to the amount of total likes/dislikes.
+  1. Users recently inputted like/dislike will increment one to the amount of total likes/dislikes.
  
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
+- **Alternate Sequence:** 
   
   1. User clicks both ‘like’ and ‘dislike’
   2. System displays error prompting to either like or dislike a post
   3. Post is no longer liked or disliked by user
  
  
-3. Post pictures/text (Josh)
-- **Pre-condition:** User has logged in
+### 3. Post pictures/text (Josh)
+- **Pre-condition:** 
  
-- **Trigger:** User clicks on ‘new post’ button 
+  1. User has logged in
+ 
+- **Trigger:** 
+ 
+  1. User clicks on ‘new post’ button 
  
 - **Primary Sequence:** 
  
@@ -96,12 +104,17 @@ Users recently inputted like/dislike will increment one to the amount of total l
   3. Shows the character count 
  
  
-4. Delete posts (Josh)
-- **Pre-condition:** User has logged in
+### 4. Delete posts (Josh)
+- **Pre-condition:** 
  
-- **Trigger:** User clicks delete post
+  1. User has logged in
  
-- **Primary Sequence:** 
+- **Trigger:** 
+ 
+  1.User clicks delete post
+ 
+- **Primary Sequence:**
+ 
   1. user must go to post that they want to delete
   2. User clicks delete option
   3. User confirms deletion
@@ -109,7 +122,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
  
 - **Primary Postconditions:** 
  
-   1. post will be removed, user will be redirected
+  1. post will be removed, user will be redirected
  
 - **Alternate Sequence:**
  
@@ -117,10 +130,14 @@ Users recently inputted like/dislike will increment one to the amount of total l
   2. The user will be redirected
  
  
-5. Search users (jose c.)
-- **pre-condition:**  User has logged in
+### 5. Search users (Jose C.)
+- **pre-condition:**  
  
-- **Trigger:** User clicks on search bar
+  1.User has logged in
+ 
+- **Trigger:**
+ 
+  1. User clicks on search bar
  
 - **Primary-sequence:**
  
@@ -132,7 +149,8 @@ Users recently inputted like/dislike will increment one to the amount of total l
   6.System displays desired users homepage
  
 - **Primary-postconditions:** 
- Users are able to explore desired searched users' homepage, click on posts, click on followers, etc.
+ 
+  1. Users are able to explore desired searched users' homepage, click on posts, click on followers, etc.
  
 - **Alternative sequence:**
  
@@ -141,12 +159,15 @@ Users recently inputted like/dislike will increment one to the amount of total l
   3. User must retry search
  
  
-6. Follow user (Haolin)
+### 6. Follow user (Haolin)
 - **Pre-condition:**  
+ 
   1. The account needs to exist 
   2. The followee needs to be logged in 
 
-- **Trigger:** User clicks on the follow button on the other user's profile 
+- **Trigger:** 
+ 
+  1. User clicks on the follow button on the other user's profile 
 
 - **Primary Sequence:**
   
@@ -161,15 +182,15 @@ Users recently inputted like/dislike will increment one to the amount of total l
   1. If the user gets accepted the followed user displays on the user’s followed list.
   2. If the user gets declined, it will not show up on their follow list
 
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-
+- **Alternate Sequence:** 
+ 
   1. The user try to follow an account that is deleted
   2. A pop up message, or on screen display showing the user you trying to follow does not exist
 
-
-7. Display current/ others’ user profile (Haolin)
+### 7. Display current/ others’ user profile (Haolin)
 - **Pre-condition:** 
-  The user needs to be logged in 
+  
+  1. The user needs to be logged in 
 
 - **Trigger:** 
  
@@ -186,8 +207,7 @@ Users recently inputted like/dislike will increment one to the amount of total l
 
 - **Primary Postconditions:** 
  
- The current user’s page and or anothers’ page, will display their user name, maybe a profile picture, the people that you/they have followed, and the amount of followed and followers you or they have. 
-
+  1. The current user’s page and or anothers’ page, will display their user name, maybe a profile picture, the people that you/they have followed, and the amount of followed and followers you or they have. 
 
 - **Alternate Sequence:** 
   
