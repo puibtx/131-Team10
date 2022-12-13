@@ -6,14 +6,14 @@
 2. Logout
 3. Create New Account
 4. Delete Account
-5. User home page
-6. Update User Information
-7. Post pictures/text
-8. Like/Dislike posts
-9. Delete posts
-10. Follow Users
-11. Display others' profiles
-12. Search Users
+5. [User home page]
+6. [Update User Information]
+7. [Post pictures/text]
+8. [Like/Dislike posts]
+9. [Delete posts]
+10. [Follow Users]
+11. [Display others' profiles]
+12. [Search Users]
 
 ## Non-functional Requirements
 
@@ -28,25 +28,28 @@
 - **Pre-condition:** 
 
   1. User has logged in
-  2. User is
+  2. User is in home page and drop down menu 
 
 - **Trigger:** 
 
-  1. User 
+  1. User clicks on `Update Account`
  
 - **Primary Sequence:**
   
-  1. System displays the user’s inbox for messages
+  1. System will display two different text boxes for username and bio
+  2. User is able to type in username text box to change user name
+  3. User is able to type in bio text box to change bio
+  4. User clicks on submit to update the user information
  
 - **Primary Postconditions:** 
  
-  1. The recipient(s) gets the message from the user and may view it in their inbox for messages where they can respond.
+  1. The user's information will be updated and will show new information in user homepage.
  
 - **Alternate Sequence:** 
   
-  1. User clicks ‘send’
-  2. System states inputted text length is too long
-  3. Displays the maximum character limit in a single message
+  1. User does not click submit
+  2. User leaves text box for username empty
+  3. User leaves text box for bio empty
  
  
 ### 2. Like/Dislike posts (Nick)
@@ -56,7 +59,7 @@
  
 - **Trigger:** 
  
-  1. User clicks like/dislike button
+  1. User clicks `like` or `dislike` button
  
 - **Primary Sequence:**
   
@@ -71,7 +74,7 @@
  
 - **Alternate Sequence:** 
   
-  1. User clicks both ‘like’ and ‘dislike’
+  1. User clicks both `like` and `dislike`
   2. System displays error prompting to either like or dislike a post
   3. Post is no longer liked or disliked by user
  
@@ -83,7 +86,7 @@
  
 - **Trigger:** 
  
-  1. User clicks on ‘new post’ button 
+  1. User clicks on `post` button 
  
 - **Primary Sequence:** 
  
@@ -133,16 +136,17 @@
 ### 5. Search users (Jose C.)
 - **pre-condition:**  
  
-  1.User has logged in
+  1. User has logged in
+  2. User is in homepage
  
 - **Trigger:**
  
-  1. User clicks on search bar
+  1. User clicks on `search bar`
  
 - **Primary-sequence:**
  
   1. User hovers over search bar
-  2. User types user
+  2. User types username
   3. System prints suggestions
   4. User can either click from suggestions or finish typing desired user
   5.User clicks on desired user profile
@@ -167,7 +171,7 @@
 
 - **Trigger:** 
  
-  1. User clicks on the follow button on the other user's profile 
+  1. User clicks on the `follow` button on the other user's profile 
 
 - **Primary Sequence:**
   
