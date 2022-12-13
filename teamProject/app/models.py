@@ -10,6 +10,8 @@ followers = db.Table('followers',
                      db.Column('followed_id', db.Integer,
                                db.ForeignKey('user.id'))
                      )
+#association table with follower, that keep track of the who is the follower on the follower db.column 
+# and using follwed_id to keep track who they are following
 
 
 class Post(db.Model):
@@ -37,37 +39,27 @@ class User(db.Model, UserMixin):
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
 
+#many-to-many relation it link different User 
+#secondary config the association table, primayjoin= the left column = the followee/follower
+#secnonday join = right column in the follower db, = the following/user that being followed
+#backref so the right hand column has a way to "track back" it's left handside( follower column)
+
     def get_pic(self):
         return self.profile_pic
 
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
+#check if the self is already following the user.
 
     def follow(self, user):
         if not self.is_following(user):
             self.followed.append(user)
-
+#follow function 
     def unfollow(self, user):
         if self.is_following(user):
             self.followed.remove(user)
-
-    # def following(self):
-    #     return (self.join(Relationship, on=Relationship.from_user)
-    #                 .where(Relationship.to_user == self)
-    #                 .order_by(User.username))
-
-    # def follower_count(self)
-    #     return
-
-    # def following_count(self)
-
-    # post of the people you followed
-    # def followed_posts(self):
-    #     return Post.query.join(
-    #         followers, (followers.c.followed_id == Post.user_id)).filter(
-    #             followers.c.follower_id == self.id).order_by(
-    #                 Post.timestamp.desc())
+#unfollow function 
 
     def update_bio(self, update_bio):
         self.bio = update_bio
