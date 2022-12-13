@@ -9,7 +9,7 @@ from flask_login import LoginManager
 #database is created
 db = SQLAlchemy()
 
-DB_NAME = "app2.db"
+DB_NAME = "app3.db"
 UPLOAD_FOLDER = 'app/static/images/'
 
 

@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import EmailField, PasswordField, BooleanField, SubmitField, StringField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Length
-from flask_wtf.file import FileField
+from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 
 class LoginForm(FlaskForm):
@@ -30,3 +30,7 @@ class SignupForm(FlaskForm):
     bio = TextAreaField('about me....')
 
     profile_pic = FileField('Profile Pic')
+
+class UploadForm(FlaskForm):
+    image = FileField('Image')
+    

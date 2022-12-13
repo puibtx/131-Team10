@@ -21,6 +21,11 @@ display %}
                   Add Post
                 </button>
               </div>
+              <div align="right">
+                {{current_user.image}} {{ form.image.label(class =
+                "form-label", style = "float: left") }} {{ form.image(class =
+                "form-control")}}
+              </div>
             </form>
           </div>
         </div>

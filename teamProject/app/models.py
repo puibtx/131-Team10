@@ -17,6 +17,7 @@ class Post(db.Model):
     data = db.Column(db.String(250))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    image = db.Column(db.String(36))
 
 
 class User(db.Model, UserMixin):
