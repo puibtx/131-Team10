@@ -19,4 +19,8 @@ Team member decide which functional requirment they want to code on (write the u
 We talked about what we were going to get started on doing once we had the basic four requirements ready
 of Login, Logout, Delete User and Sign Up.
 - Nick worked on understanding the given code from lecture fully by watching a 2 hr video going over the components. Then got started on implementing our own requirements to the code.
-   
+- Joshua J joined the meeting to talk about which requirements to get started on and to understand the concept that was already made in the repo. Also watched a 2 hr video on how to make a webpage using python, html, and bootsrap. Will be working on understanding the python coding and to implement knowledge.
+
+### 2022-12-06 at 19:00
+- all team members present
+- Joshua J joined the meeting call to go over what needs to be done and to also see whats finished. Talked about html files and the route python code. Will try to work on creating a new route for other ueers' profiles and to create a message database.
