@@ -6,7 +6,7 @@
 2. Logout
 3. Create New Account
 4. Delete Account
-5. [User home page]
+5. [User home page](https://github.com/puibtx/131-Team10/blob/master/requirements.md#8-user-home-page-josh)
 6. [Update User Information](https://github.com/puibtx/131-Team10/blob/master/requirements.md#1-update-user-information-nick)
 7. [Post pictures/text](https://github.com/puibtx/131-Team10/blob/master/requirements.md#3-post-picturestext-josh)
 8. [Like/Dislike posts](https://github.com/puibtx/131-Team10/blob/master/requirements.md#2-likedislike-posts-nick)
