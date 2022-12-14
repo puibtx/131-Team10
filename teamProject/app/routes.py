@@ -2,7 +2,7 @@ from flask import current_app, Blueprint, render_template, flash, redirect, url_
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from .forms import SignupForm, UploadForm
-from PIL import Image
+
 import uuid as uuid
 import config
 import os
@@ -11,7 +11,7 @@ import pathlib
 
 from .models import User, Post
 from . import db
-import json
+
 
 
 views = Blueprint('routes', __name__)
@@ -37,13 +37,13 @@ def delete():
 @views.route('/home/<username>/post', methods=['GET', 'POST'])
 @login_required
 def post(username):
-    form = UploadForm()
+    form = UploadForm()    #from forms.py that enables file upload for pic post
 
-    if request.method == 'POST' and form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():  #checks with validators
         post = request.form.get('post')
         image_id = None
         image = request.files['image']
-        if image:
+        if image:      #checks to see if the image is there after request from files
             try:
                 image_id = str(uuid.uuid1()) + "_" + secure_filename(image.filename)
                 image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], image_id))
@@ -51,14 +51,14 @@ def post(username):
                 db.session.add(new_post)
                 db.session.commit()
                 flash('Post uploaded', category='success')
-                return redirect(url_for('routes.home', username=username))
+                return redirect(url_for('routes.home', username=username))   #Once added to db, it will redirect to the user home page
 
             except OSError as err:
                 print("OS error:", err)
                 flash('fail')
     
         if len(post) > 250:
-            flash('Text no more than 250 characters!', category='error')
+            flash('Text no more than 250 characters!', category='error')  # ensures post length is no more than 250 characters
         else:
             new_post = Post(data=post, user_id=current_user.id, image=image_id)
             db.session.add(new_post)
@@ -71,7 +71,7 @@ def post(username):
 
 @views.route('/home/<username>/delete-post/<int:id>')
 @login_required
-def deletePost(id, username):
+def deletePost(id, username):  #takes a an id so the deleted post can be identified and removed from the database
     deleted_post = Post.query.get_or_404(id)
     db.session.delete(deleted_post)
     db.session.commit()
