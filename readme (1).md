@@ -59,7 +59,6 @@ The non-functional requirements are as listed above. Our team wants to ensure th
 - `config`
 - `flask_login`
 - `flask_wtf`
-- `SQLAlchemy`
 
 
 ## :hammer_and_wrench: Installation
