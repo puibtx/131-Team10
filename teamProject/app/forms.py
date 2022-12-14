@@ -32,5 +32,5 @@ class SignupForm(FlaskForm):
     profile_pic = FileField('Profile Pic')
 
 class UploadForm(FlaskForm):
-    image = FileField('Image')
+    image = FileField('Image', validators = [FileAllowed(['jpg', 'png'])])
     

@@ -140,8 +140,21 @@
             {% for post in posts %}
                 <li class="list-group-item ">
                   <div class="mb-5">
-                    {{ post.data }}
-                    {{ post.image }}
+                    
+                    <div style="text-align: left;">
+                        {% if post.image %}
+                    
+                        <img src="{{url_for('static', filename='images/' + post.image)}}" width="200" height="200" class="rounded mx-auto d-block float-left">
+                        {% endif%}
+                        
+                    </div>
+                
+                    <div style="text-align: left;">
+                        {{ post.data }}
+                    </div>
+
+                    
+
                     {%if username == userhome %}
                     <div style="display: inline-block; position: absolute;
                     right: 0;">
@@ -149,15 +162,11 @@
                         <a href="/home/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm" style="display: inline">Delete</a>
                     </form>
                     {% endif%}
-                    <form method = "POST" enctype="multipart/form-data">
-                    {% if image %}
-                    <div style="padding:20px;">
-                        <img src="{{url_for('static', filename='images/' + image)}}" class="rounded mx-auto d-block" alt="" width="300">
-                    </div>
-                    {% endif%}
-                    </form>
+
+
+
                 {% endfor %}
-              </ul>
+            </ul>
             
             </div>
           </div>

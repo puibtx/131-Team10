@@ -13,7 +13,8 @@ display %}
                 enctype="multipart/form-data"
                 method="POST"
             >
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.csrf_token }}
               <textarea
                 name="post"
                 id="post"

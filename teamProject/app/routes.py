@@ -1,4 +1,4 @@
-from flask import current_app, Blueprint, render_template, flash, redirect, url_for, request, jsonify
+from flask import current_app, Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from .forms import SignupForm, UploadForm
@@ -38,19 +38,19 @@ def delete():
 @login_required
 def post(username):
     form = UploadForm()
-    #poster_user = User.query.filter_by(username=current_user.username).first()
-    if request.method == 'POST':
+
+    if request.method == 'POST' and form.validate_on_submit():
         post = request.form.get('post')
         image_id = None
         image = request.files['image']
         if image:
             try:
-                filename = str(uuid.uuid1()) + "_" + secure_filename(image.filename)
-                image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-                image_id = image.mimetype
-                new_post = Post(data=post, user_id=current_user.id, image=filename)
+                image_id = str(uuid.uuid1()) + "_" + secure_filename(image.filename)
+                image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], image_id))
+                new_post = Post(data=post, user_id=current_user.id, image=image_id)
                 db.session.add(new_post)
                 db.session.commit()
+                flash('Post uploaded', category='success')
                 return redirect(url_for('routes.home', username=username))
 
             except OSError as err:
