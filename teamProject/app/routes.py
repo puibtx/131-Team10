@@ -45,7 +45,7 @@ def post(username):
         image = request.files['image']
         if image:      #checks to see if the image is there after request from files
             try:
-                image_id = str(uuid.uuid1()) + "_" + secure_filename(image.filename)
+                image_id = str(uuid.uuid1()) + "_" + secure_filename(image.filename)  #creates image id to store in database
                 image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], image_id))
                 new_post = Post(data=post, user_id=current_user.id, image=image_id)
                 db.session.add(new_post)
