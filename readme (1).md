@@ -36,7 +36,7 @@ An engineering solution is a process that spells out the solution requirements t
 | 5   | User Home Page                  |            
 | 6   | Update User Information         |          
 | 7   | Post Pictures / Text            |         
-| 8   | Like / Dislike Posts            |           
+| 8   | Upload Profile Picture          |           
 | 9   | Delete Posts                    |         
 | 10  | Follow Users                    |         
 | 11  | Display Other Users' Profiles   |         
