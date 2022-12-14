@@ -130,5 +130,28 @@ If the user does not have an account in the system, the user is able to click th
 
 ### Navigation Bar
 Once the user is in the user home page, they will see a navigation bar located at the top of the website. This navigation bar will be the main tool that the user will use to go around and navigate around the website. 
+![image](https://user-images.githubusercontent.com/116837728/207505957-9d025a97-862d-49a8-b16e-44177a6a5a61.png)
+
+### Profile
+The home page will show the User's information which includes the follower count and the following count. It will also show the recent posts. The User is also able to press the `delete` button to delete their posts at the bottom if they have any.
+![image](https://user-images.githubusercontent.com/116837728/207506719-fcd28ef4-ebf1-4221-997e-1fcca10108d6.png)
+
+### Post
+Clicking on the `Post` button on the navigation bar will redirect the user to the post page. The user is able to enter text into the text box and as well as adding a picture if the user clicks on the `Choose File` button at the bottom. Once the user is done adding in content, they are able to click on the `Add Post` button to add post to their user profile feed.
+![image](https://user-images.githubusercontent.com/116837728/207506745-c5b80fc4-7487-4e7c-8534-f463c1107ad5.png)
+
+### Search
+Clicking on the `Search` button on the navigation bar will redirect the user to the search page. The user is able to enter a username in the text box to search for other users in the system. Once they type in a username, the user can click on the green `Search` button. The user will then be redirected to another users' profile page showing the other users' information.
+![image](https://user-images.githubusercontent.com/116837728/207506826-63af17ad-c4cf-4d7f-8b96-c1ad9e9452f5.png)
+
+
+### User Settings Dropdown Menu
+Clicking the `User Settings` dropdown menu button, three buttons will appear which are `Update Account`, `Sign out`, and `Delete account`. The `Update Account` will redirect the user to the update account page. The `Sign out` button will sign the current user out of the system and redirect the user to the login page. The `Delete account` will delete the current user and redirect them to the login page.
+![image](https://user-images.githubusercontent.com/116837728/207506867-8e798b61-3a29-412c-9e3d-3eed33eca9f5.png)
+
+### Update Account
+Clicking the `Update Account` button in the dropdown menu will redirect the user to the update account page. The user is able to click the `Choose File` button to change their profile picture. The user is also able to change their username by typing in the text box. The user is also able to update their bio if they do not have one yet under the `About me` title. Once the user is content with the updated information, they can  go ahead and press the `Update Information` button at the bottom of the page and the system will update their information.
+![image](https://user-images.githubusercontent.com/116837728/207506845-38eeb971-1d11-484a-921f-80ced1b8e2e5.png)
+
 
 
