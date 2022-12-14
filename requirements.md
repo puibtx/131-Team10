@@ -6,14 +6,14 @@
 2. Logout
 3. Create New Account
 4. Delete Account
-5. [User home page](https://github.com/puibtx/131-Team10/blob/master/requirements.md#8-user-home-page-josh)
-6. [Update User Information](https://github.com/puibtx/131-Team10/blob/master/requirements.md#1-update-user-information-nick)
-7. [Post pictures/text](https://github.com/puibtx/131-Team10/blob/master/requirements.md#3-post-picturestext-josh)
-8. [Upload Profile Picture](https://github.com/puibtx/131-Team10/blob/master/requirements.md#2-upload-profile-picture-nick)
-9. [Delete posts](https://github.com/puibtx/131-Team10/blob/master/requirements.md#4-delete-posts-josh)
-10. [Follow Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#6-follow-user-haolin)
-11. [Display others' profiles](https://github.com/puibtx/131-Team10/blob/master/requirements.md#7-display-current-others-user-profile-haolin)
-12. [Search Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#5-search-users-jose-c)
+5. [User home page](https://github.com/puibtx/131-Team10/blob/master/requirements.md#8-user-home-page)
+6. [Update User Information](https://github.com/puibtx/131-Team10/blob/master/requirements.md#1-update-user-information)
+7. [Post pictures/text](https://github.com/puibtx/131-Team10/blob/master/requirements.md#3-post-picturestext)
+8. [Upload Profile Picture](https://github.com/puibtx/131-Team10/blob/master/requirements.md#2-upload-profile-picture)
+9. [Delete posts](https://github.com/puibtx/131-Team10/blob/master/requirements.md#4-delete-posts)
+10. [Follow Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#6-follow-user)
+11. [Display others' profiles](https://github.com/puibtx/131-Team10/blob/master/requirements.md#7-display-current-others-user-profile)
+12. [Search Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#5-search-users)
 
 # Non-functional Requirements
 
@@ -24,7 +24,7 @@
 
 # Use Cases
 
-## 1. Update User Information (Nick)
+## 1. Update User Information
 - **Pre-condition:** 
 
   1. User has logged in
@@ -52,7 +52,7 @@
   3. User leaves text box for bio empty
  
  
-## 2. Upload Profile Picture (Nick)
+## 2. Upload Profile Picture
 - **Pre-condition:** 
  
   1. User has logged in
@@ -80,7 +80,7 @@
   2. User cannot upload certain files
  
  
-## 3. Post pictures/text (Josh)
+## 3. Post pictures/text
 - **Pre-condition:** 
  
   1. User has logged in
@@ -109,7 +109,7 @@
   3. Shows the character count 
  
  
-## 4. Delete posts (Josh)
+## 4. Delete posts
 - **Pre-condition:** 
  
   1. User has logged in
@@ -134,7 +134,7 @@
   2. User tries to get the file back
  
  
-## 5. Search users (Jose C.)
+## 5. Search users
 - **pre-condition:**  
  
   1. User has logged in
@@ -162,7 +162,7 @@
   3. User must retry search
  
  
-## 6. Follow user (Haolin)
+## 6. Follow user
 - **Pre-condition:**  
  
   1. The account needs to exist 
@@ -189,7 +189,7 @@
   1. The user try to follow an account that is deleted
   2. A pop up message, or on screen display showing the user you trying to follow does not exist
 
-## 7. Display current/ others’ user profile (Haolin)
+## 7. Display current/ others’ user profile
 
 - **Pre-condition:** 
   
@@ -215,7 +215,7 @@
   1. You try to view a profile of an account that has been deleted
   2. The page will just be labeled the user does not exist or has been deleted
 
-## 8. User Home Page (Josh)
+## 8. User Home Page
 - **Pre-condition:** 
   
   1. The user needs to be logged in 
