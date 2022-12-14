@@ -124,8 +124,8 @@
         <p class="text-muted mb-1">{{bio}}</p>
         <ul>
         
-          <li> followers </li>
-          <li> following </li>
+          <li> {{user.followers.count()}} followers </li>
+          <li> {{user.followed.count()}} following </li>
           
         </ul>
         

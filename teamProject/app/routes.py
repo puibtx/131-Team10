@@ -5,20 +5,23 @@ from .forms import SignupForm
 import uuid as uuid
 import config
 import os
-import pathlib
+
 
 from .models import User, Post
 from . import db
 import json
 
-
+# this blueprint is for the remaining routes
 views = Blueprint('routes', __name__)
+
+# route to delete user
 
 
 @views.route('/delete')
 @login_required
 def delete():
 
+    # we utilize the current_user from flask login
     delete_user = User.query.filter_by(id=current_user.id).first()
 
     try:
@@ -60,13 +63,7 @@ def deletePost(id, username):
     return redirect(url_for('routes.home', username=username))
 
 
-@views.route('/feed/<username>', methods=['GET', 'POST'])
-@login_required
-def feed(username):
-
-    return render_template('feed.html', username=username)
-
-
+# logged in users home route
 @views.route('/home/<username>/', methods=['GET', 'POST'])
 @login_required
 def home(username):
@@ -75,28 +72,31 @@ def home(username):
     posts = user.get_posts()
     profile_pic = user.get_pic()
 
-    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts, profile_pic=profile_pic)
+    # we pass a lot of things because the home page would have a basic logic to display another users homepage found in visiting
+    return render_template('home.html', username=current_user.username, userhome=current_user.username, bio=bio, posts=posts, profile_pic=profile_pic, user=user)
+
+# route for search
 
 
 @views.route("/home/<username>/search", methods=['GET', 'POST'])
 @login_required
 def search(username):
     if request.method == 'POST':
+        # the user will search for the username and we will use to query
         searched_username = request.form.get('searched')
         searched = User.query.filter_by(username=searched_username).first()
 
+        # if the user exists we can redirect to that user home page
         if searched:
-            current = User.query.filter_by(
-                username=current_user.username).first()
-            following = current.is_following(searched)
-            print(following)
-        # if user exists then we can redirect to that users home page
+            # redirect to that users home page
             return redirect(url_for('routes.visiting', username=current_user.username, other_user=searched_username))
         else:
 
             flash('user does not exist.', category='error')
 
     return render_template('search.html', username=current_user.username)
+
+# very similar to the home route but in this case we request and query based on the other users db
 
 
 @views.route('/visiting/<username>/<other_user>', methods=['GET', 'POST'])
@@ -105,6 +105,8 @@ def visiting(username, other_user):
 
     other_user = User.query.filter_by(username=other_user).first()
     current = User.query.filter_by(username=current_user.username).first()
+
+    # the post is for users to follow each other updating the db in models
     if request.method == 'POST':
         follow(current, other_user)
         return redirect(url_for('routes.visiting', username=current_user.username, other_user=other_user.get_username()))
@@ -114,7 +116,7 @@ def visiting(username, other_user):
     profile_pic = other_user.get_pic()
     following = current.is_following(other_user)
     return render_template(
-        'home.html', username=current_user.username, userhome=other_username, bio=bio, posts=posts, following=following, profile_pic=profile_pic)
+        'home.html', username=current_user.username, userhome=other_username, bio=bio, posts=posts, following=following, profile_pic=profile_pic, user=other_user)
 
 
 def follow(current, other_user):
@@ -131,23 +133,7 @@ def follow(current, other_user):
         flash(f'Unfollowed')
 
 
-@views.route("/<username>/followers")
-@login_required
-def showfollowers(username):
-    user = User.query.filter_by(username=username).first()
-    followers_ = user.followers
-    return render_template('followers.html', users=followers_)
-
-
-@views.route("/<username>/following")
-@login_required
-def showfollowing(username):
-    user = User.query.filter_by(username=username).first()
-    following = user.followed
-    # return render_template('following.html', username=username)
-    return render_template('following.html', users=following)
-
-
+# user to update the user information
 @views.route('/update-info/<username>', methods=['GET', 'POST'])
 @login_required
 def update(username):
@@ -160,11 +146,11 @@ def update(username):
         update_user.username = request.form.get('username')
         update_user.update_bio(request.form.get('bio'))
         if request.files['profile_pic']:
-            print('profile_pic')
+            # we have a special case for the profile pic since it would be a bit harder to keep safe than the username and bio
+            # if the user submits a picture only then will we update it
 
             update_user.profile_pic = request.files['profile_pic']
 
-            # update_user.profile_pic = request.files['profile_pic']
             pic_filename = secure_filename(update_user.profile_pic.filename)
             # create a random name
             pic_name = str(uuid.uuid1()) + "_" + pic_filename
@@ -178,6 +164,7 @@ def update(username):
 
                 db.session.commit()
 
+                # os creates the string that we will save at the designated folder created in init (it is in static)
                 save_file.save(os.path.join(
                     current_app.config['UPLOAD_FOLDER'], pic_name))
 

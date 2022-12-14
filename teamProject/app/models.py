@@ -1,7 +1,6 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
-from werkzeug.security import generate_password_hash, check_password_hash
 
 
 followers = db.Table('followers',
@@ -23,8 +22,6 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(128), index=True, unique=True)
     username = db.Column(db.String(15), index=True, unique=True)
-    first_name = db.Column(db.String(15), index=True)
-    last_name = db.Column(db.String(15), index=True)
     password = db.Column(db.String(100))
     posts = db.relationship('Post')
     profile_pic = db.Column(db.String(), nullable=True)
@@ -36,6 +33,8 @@ class User(db.Model, UserMixin):
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+
+# i created this functions before I realized I could just use .attribute but thery help with multiple things through out managing and searching through our db'''
 
     def get_pic(self):
         return self.profile_pic
@@ -51,23 +50,6 @@ class User(db.Model, UserMixin):
     def unfollow(self, user):
         if self.is_following(user):
             self.followed.remove(user)
-
-    # def following(self):
-    #     return (self.join(Relationship, on=Relationship.from_user)
-    #                 .where(Relationship.to_user == self)
-    #                 .order_by(User.username))
-
-    # def follower_count(self)
-    #     return
-
-    # def following_count(self)
-
-    # post of the people you followed
-    # def followed_posts(self):
-    #     return Post.query.join(
-    #         followers, (followers.c.followed_id == Post.user_id)).filter(
-    #             followers.c.follower_id == self.id).order_by(
-    #                 Post.timestamp.desc())
 
     def update_bio(self, update_bio):
         self.bio = update_bio
