@@ -20,6 +20,9 @@ We talked about what we were going to get started on doing once we had the basic
 of Login, Logout, Delete User and Sign Up.
 - Nick worked on understanding the given code from lecture fully by watching a 2 hr video going over the components. Then got started on implementing our own requirements to the code.
 - Joshua J joined the meeting to talk about which requirements to get started on and to understand the concept that was already made in the repo. Also watched a 2 hr video on how to make a webpage using python, html, and bootsrap. Will be working on understanding the python coding and to implement knowledge.
+- Jose C demo a sample user login, sign up page, logout, delete
+
+
 
 ### 2022-12-06 at 19:00
 - all team members present
