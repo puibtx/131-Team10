@@ -28,3 +28,9 @@ of Login, Logout, Delete User and Sign Up.
 ### 2022-12-09 at ~20:00
 - Haolin J, Jose C, Nick F
 - debugging session, Haolin were having trouble to have following page working, Jose spot the wrong user were passed it, we need to create a another user to keep track, ontop of the original user pass in Nick F joined to check in on progress. 
+
+### 2022-12-13 at ~19:00
+- all team members present
+- Team Discord Meeting
+- Made final changes to the code. Haolin and Joshua J. worked on the readme.md to make final changes. Joshua J. updated requirements.md to match final code. Jose C. and Nick F. made final changes to the code. Comments are also added into the code.
+
