@@ -9,7 +9,7 @@
 5. [User home page](https://github.com/puibtx/131-Team10/blob/master/requirements.md#8-user-home-page-josh)
 6. [Update User Information](https://github.com/puibtx/131-Team10/blob/master/requirements.md#1-update-user-information-nick)
 7. [Post pictures/text](https://github.com/puibtx/131-Team10/blob/master/requirements.md#3-post-picturestext-josh)
-8. [Upload Profile Picture](https://github.com/puibtx/131-Team10/blob/master/requirements.md#2.-upload-profile-picture-nick)
+8. [Upload Profile Picture](https://github.com/puibtx/131-Team10/blob/master/requirements.md#2-upload-profile-picture-nick)
 9. [Delete posts](https://github.com/puibtx/131-Team10/blob/master/requirements.md#4-delete-posts-josh)
 10. [Follow Users](https://github.com/puibtx/131-Team10/blob/master/requirements.md#6-follow-user-haolin)
 11. [Display others' profiles](https://github.com/puibtx/131-Team10/blob/master/requirements.md#7-display-current-others-user-profile-haolin)
