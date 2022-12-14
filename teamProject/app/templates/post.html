@@ -8,6 +8,11 @@ display %}
       <div class="card bg-light text-black-50" style="border-radius: 1rem">
         <div class="card-body p-5 text-center">
           <div class="mt-md-4 pb-5">
+            <form
+                action="{{url_for('routes.post', username=username)}}"
+                enctype="multipart/form-data"
+                method="POST"
+            >
             <form method="POST">
               <textarea
                 name="post"

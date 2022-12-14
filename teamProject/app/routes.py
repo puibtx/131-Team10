@@ -38,20 +38,25 @@ def delete():
 @login_required
 def post(username):
     form = UploadForm()
-    poster_user = User.query.filter_by(username=current_user.username).first()
-    if request.method == 'POST' and form.validate_on_submit:
+    #poster_user = User.query.filter_by(username=current_user.username).first()
+    if request.method == 'POST':
         post = request.form.get('post')
         image_id = None
-        if form.image.data:
-            f = form.image.data
-            image_id = str(uuid.uuid4())
-            file_name = image_id + '.png'
-            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], file_name)
-            Image.open(f).save(file_path)
-            new_post = Post(data=post, user_id=current_user.id, image=image_id)
-            db.session.add(new_post)
-            db.session.commit()
-        #
+        image = request.files['image']
+        if image:
+            try:
+                filename = str(uuid.uuid1()) + "_" + secure_filename(image.filename)
+                image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+                image_id = image.mimetype
+                new_post = Post(data=post, user_id=current_user.id, image=filename)
+                db.session.add(new_post)
+                db.session.commit()
+                return redirect(url_for('routes.home', username=username))
+
+            except OSError as err:
+                print("OS error:", err)
+                flash('fail')
+    
         if len(post) > 250:
             flash('Text no more than 250 characters!', category='error')
         else:
@@ -61,7 +66,7 @@ def post(username):
             flash('Post uploaded', category='success')
             return redirect(url_for('routes.home', username=username))
 
-    return render_template('post.html', user=current_user, username=username, form=form, poster_user=poster_user)
+    return render_template('post.html', user=current_user, username=username, form=form)
 
 
 @views.route('/home/<username>/delete-post/<int:id>')

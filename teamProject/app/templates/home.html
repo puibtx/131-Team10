@@ -135,28 +135,34 @@
 
 
     <div class="col">
-      <div class="card mb-4">
-        <div class="card-body">
-          {% for post in posts %}
-              <li class="list-group-item ">
-                <div class="mb-5">
-                  {{ post.data }}
-                  {%if username == userhome %}
-                  <div style="display: inline-block; position: absolute;
-                  right: 0;">
-                  <form action ='/home/{{username}}/' method="POST">
-                      <a href="/home/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm" style="display: inline">Delete</a>
-                  </form>
-                  </div>
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </ul>
-          
+        <div class="card mb-4">
+          <div class="card-body">
+            {% for post in posts %}
+                <li class="list-group-item ">
+                  <div class="mb-5">
+                    {{ post.data }}
+                    {{ post.image }}
+                    {%if username == userhome %}
+                    <div style="display: inline-block; position: absolute;
+                    right: 0;">
+                    <form action ='/home/{{username}}/' method="POST">
+                        <a href="/home/{{username}}/delete-post/{{post.id}}" class="btn btn-outline-secondary btn-sm" style="display: inline">Delete</a>
+                    </form>
+                    {% endif%}
+                    <form method = "POST" enctype="multipart/form-data">
+                    {% if image %}
+                    <div style="padding:20px;">
+                        <img src="{{url_for('static', filename='images/' + image)}}" class="rounded mx-auto d-block" alt="" width="300">
+                    </div>
+                    {% endif%}
+                    </form>
+                {% endfor %}
+              </ul>
+            
+            </div>
           </div>
-        </div>
-      </div>  
-  </div>
+        </div>  
+    </div>
 
   
   {% endblock %}
