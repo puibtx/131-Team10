@@ -138,37 +138,37 @@ def visiting(username, other_user):
 
 def follow(current, other_user):
 
-    if not current.is_following(other_user):
+    if not current.is_following(other_user):   #adding a button so people can follow each other 
         # user toggle button and resulted in a following
-        current_user.follow(other_user)
-        db.session.commit()
+        current_user.follow(other_user)   # if not, follow them 
+        db.session.commit()  #apply change to the db 
         flash(f'followed ')
 
     else:
-        current_user.unfollow(other_user)
+        current_user.unfollow(other_user)    #if already following 
         db.session.commit()
-        flash(f'Unfollowed')
+        flash(f'Unfollowed')    #if apply change to db
 
 
-@views.route("/<username>/followers")
-@login_required
-def showfollowers(username):
-    user = User.query.filter_by(username=username).first()
-    followers_ = user.followers
-    return render_template('followers.html', users=followers_)
+@views.route("/<username>/followers") #create url route that redirect the user to check on their followers
+@login_required  #make sure the user is logged in
+def showfollowers(username):  #func def and we need to take in the username 
+    user = User.query.filter_by(username=username).first()  #using query.filter find the user that match with the current user name
+    followers_ = user.followers #make followers_ the user's followers
+    return render_template('followers.html', users=followers_) #pass that followers list and pass it in
 
 
 @views.route("/<username>/following")
-@login_required
-def showfollowing(username):
+@login_required          #make sure the user is logged in 
+def showfollowing(username):   #create url route that redirect the user to check on their followering list
     user = User.query.filter_by(username=username).first()
-    following = user.followed
+    following = user.followed             #make followering_ the input user's following
     # return render_template('following.html', username=username)
-    return render_template('following.html', users=following)
+    return render_template('following.html', users=following)  # pass it into the render template 
 
 
 @views.route('/update-info/<username>', methods=['GET', 'POST'])
-@login_required
+@login_required    
 def update(username):
     form = SignupForm()
     update_user = User.query.filter_by(
