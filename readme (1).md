@@ -55,18 +55,33 @@ The non-functional requirements are as listed above. Our team wants to ensure th
 
 ## :abacus: List of Libraries Used
 
-- `Flask`
-- `FlaskForm`
-- `WTForms`
-- `Config`
 - `SQLAlchemy`
-- `LoginManager`
-- `Blueprint`
-- `User`,`Post`
-- `LoginForm`,`SignupForm`,`SearchForm`
+- `config`
+- `flask_login`
+- `flask_wtf`
+- `SQLAlchemy`
 
 
 ## :hammer_and_wrench: Installation
+
+- Make sure we have some form of linux based command line. The make sure you have python installed. (installation varies among platform) 
+https://realpython.com/installing-python/#how-to-install-on-ubuntu-and-linux-mint
+- Make sure python `pip` is install for other dependancy and libraries
+https://pip.pypa.io/en/stable/installation/
+- Install flask through python `pip`
+https://flask.palletsprojects.com/en/2.2.x/installation/
+- Install `config` through 
+```
+$pip install config
+
+```
+- Install `SQLAlchemy`
+https://pypi.org/project/flask-sqlalchemy/
+- Install `flask_login`
+https://flask-login.readthedocs.io/en/latest/
+- Intall `flask_wtf`
+https://flask-wtf.readthedocs.io/en/0.15.x/install/
+
 
 ## :rocket:	How to Use
 
