@@ -1,0 +1,29 @@
+{% extends 'home.html' %} {% block title %} Search User {% endblock %} {%block
+display%}
+
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-light text-black-50" style="border-radius: 1rem">
+        <div class="card-body p-5 text-center">
+          <h5>Please enter username</h5>
+          <form method="POST" action="">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              name="searched"
+            />
+            <div class="mb-md-5 mt-md-4">
+              <button type="submit" class="btn btn-outline-success">
+                search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

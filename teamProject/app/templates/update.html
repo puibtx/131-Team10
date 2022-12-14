@@ -1,0 +1,52 @@
+{% extends 'home.html' %} {% block title %} Update User Information{% endblock
+%} {%block display%}
+
+<div class="col">
+  <div class="card mb-4">
+    <div class="card-body">
+      <form
+        action="{{url_for('routes.update', username=username)}}"
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        <div class="mt-2 col-md-12">
+          {{update_user.profile_pic}} {{ form.profile_pic.label(class =
+          "form-label", style = "float: left") }} {{ form.profile_pic(class =
+          "form-control")}}
+        </div>
+
+        <!--Username-->
+        <div class="mt-2 col-md-12">
+          {{ form.username.label(class = "form-label", style = "float: left") }}
+          {{ form.username(class = "form-control", value=update_user.username)}}
+        </div>
+
+        <!--bio-->
+        <div class="mt-2 col-md-12">
+          <label for="bio"> About me </label>
+          <textarea
+            name="bio"
+            id="bio"
+            class="form-control"
+            rows="10"
+            cols="10"
+            value="tort"
+          >
+{{bio}}
+          </textarea>
+        </div>
+
+        <div class="mt-2 col-md-12">
+          <br />
+          <input
+            type="submit"
+            class="btn btn-outline-secondary"
+            value="Update Information"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
