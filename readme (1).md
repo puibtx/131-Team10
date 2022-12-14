@@ -114,9 +114,11 @@ To start up the web application, the user will need to be in the directory where
 $python3 main.py
 
 ```
-then in ur browser enter the following url 
+Then enter the following URL below into Google Chrome.
 
 http://localhost:5000/
+
+The user will be directed to the login page.
 
 ### Signing Up
 Once the user has the web application running, the log in page will be the first page they will be in. The user is able to type into the `email` text box and `password` text box to enter their information if they have an account already. Once the text boxes are filled with the correct information, the user may click on the `Sign In` button and will be redirected to the user home page. 
