@@ -9,16 +9,17 @@
         enctype="multipart/form-data"
         method="POST"
       >
+        <h5>Update information</h5>
         <div class="mt-2 col-md-12">
-          {{update_user.profile_pic}} {{ form.profile_pic.label(class =
-          "form-label", style = "float: left") }} {{ form.profile_pic(class =
-          "form-control")}}
+          {{ form.profile_pic.label(class = "form-label", style = "float: left")
+          }} {{ form.profile_pic(class = "form-control")}}
         </div>
 
         <!--Username-->
         <div class="mt-2 col-md-12">
           {{ form.username.label(class = "form-label", style = "float: left") }}
           {{ form.username(class = "form-control", value=update_user.username)}}
+          must be 6 characters
         </div>
 
         <!--bio-->
@@ -30,10 +31,10 @@
             class="form-control"
             rows="10"
             cols="10"
-            value="tort"
           >
 {{bio}}
           </textarea>
+          max of 250 words
         </div>
 
         <div class="mt-2 col-md-12">

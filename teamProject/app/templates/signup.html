@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %} signup {% endblock %} {% block
 content %}
 
-<h2 class="fw-bold mb-2 text-uppercase">Please sign up</h2>
+<h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
 <p class="text-white-50 mb-1">Please enter information</p>
 
 <form method="POST" action="">
@@ -43,14 +43,6 @@ content %}
     {% endif %}
   </div>
 
-  {% with messages = get_flashed_messages() %} {% if messages %}
-  <ul class="flashes">
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} {% endwith %}
-
   <div class="form-group mb-10">
     {{ form.confirm.label(class = "form-label", style = "float: left") }} {{
     form.confirm(class = "form-control")}} {% if form.confirm.errors %}
@@ -72,4 +64,11 @@ content %}
     <a class="button" href="/signin">Sign In</a>
   </p>
 </form>
-{% endblock %}
+
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul class="flashes">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %} {% endblock %}

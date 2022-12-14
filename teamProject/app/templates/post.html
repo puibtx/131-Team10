@@ -1,14 +1,12 @@
 {% extends "home.html" %} {% block title %} Make a Post {% endblock %} {% block
 display %}
-<h1 align="center">Posts</h1>
 
-<div class="container py-5 h-100">
-  <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <div class="card bg-light text-black-50" style="border-radius: 1rem">
-        <div class="card-body p-5 text-center">
-          <div class="mt-md-4 pb-5">
-            <form
+<div class="col">
+  <div class="card mb-4">
+    <div class="card-body">
+      <form method="POST">
+        <h5 align="center">Create a Post</h5>
+        <form
                 action="{{url_for('routes.post', username=username)}}"
                 enctype="multipart/form-data"
                 method="POST"
@@ -33,9 +31,6 @@ display %}
                 "form-control")}}
               </div>
             </form>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
