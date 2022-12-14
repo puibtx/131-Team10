@@ -59,24 +59,25 @@
  
 - **Trigger:** 
  
-  1. User clicks `like` or `dislike` button
+  1. User clicks `Update Account` button
  
 - **Primary Sequence:**
   
-  1.  System displays post from any user at home page or user profile
-  2.  User either selects like or dislike button
-  3.  System displays the number of likes/dislikes on the post already
-  4.  User can scroll to another post
+  1.  User clicks on the `User Settings` dropdown menu
+  2.  Website will show three more buttons from the dropdown menu
+  3.  User clicks on the `Update Account` button
+  4.  User will be redirected to update account page
+  5.  User can click on the `Choose File` button to pick a picture
+  6.  User clicks on `Update Information` to upload the profile picture
  
 - **Primary Postconditions:**  
  
-  1. Users recently inputted like/dislike will increment one to the amount of total likes/dislikes.
+  1. New profile picture will be displayed in the user home page
  
 - **Alternate Sequence:** 
   
-  1. User clicks both `like` and `dislike`
-  2. System displays error prompting to either like or dislike a post
-  3. Post is no longer liked or disliked by user
+  1. User does not upload a picture
+  2. User cannot upload certain files
  
  
 ## 3. Post pictures/text (Josh)
@@ -92,13 +93,14 @@
  
   1. Click new post button
   2. System opens a text box UI for user to write in
-  3. User can add a photo to the post by clicking on attachment button
-  4. User is able to post by pressing the ‘post’ button
+  3. User can add a photo to the post by clicking on the `Choose File` button
+  5. User is able to post by pressing the ‘Add Post’ button
  
 - **Primary Postconditions:**
  
-  1. Post is able to be viewed by other users
-  2. Post is able to get likes or dislikes
+  1. Post will be shown in user home page
+  2. Post is able to be viewed by other users
+  3. Post is able to get likes or dislikes
  
 - **Alternate Sequence:**
  
@@ -114,23 +116,22 @@
  
 - **Trigger:** 
  
-  1.User clicks delete post
+  1. User clicks `Delete` button
  
 - **Primary Sequence:**
  
-  1. user must go to post that they want to delete
-  2. User clicks delete option
-  3. User confirms deletion
+  1. User is in the user home page and able to see all posts
+  2. User user will click on the `Delete` button to delete their post
   4. Post is removed and deleted from db
  
 - **Primary Postconditions:** 
  
-  1. post will be removed, user will be redirected
+  1. Post is removed and deleted from db
  
 - **Alternate Sequence:**
  
-  1. User does not confirm deletion
-  2. The user will be redirected
+  1. User wants to cancel the deletion
+  2. User tries to get the file back
  
  
 ## 5. Search users (Jose C.)
@@ -141,20 +142,18 @@
  
 - **Trigger:**
  
-  1. User clicks on `search bar`
+  1. User clicks on the `Search` button
  
 - **Primary-sequence:**
  
-  1. User hovers over search bar
-  2. User types username
-  3. System prints suggestions
-  4. User can either click from suggestions or finish typing desired user
-  5.User clicks on desired user profile
-  6.System displays desired users homepage
+  1. User clicks on the `Search` button
+  2. User is redirected to the search page
+  3. User can enter a known username into the text box
+  4. User is able to click `Search` once they are done typine
  
 - **Primary-postconditions:** 
  
-  1. Users are able to explore desired searched users' homepage, click on posts, click on followers, etc.
+  1. User is redirected to the searched user
  
 - **Alternative sequence:**
  
@@ -167,7 +166,7 @@
 - **Pre-condition:**  
  
   1. The account needs to exist 
-  2. The followee needs to be logged in 
+  2. The follower needs to be logged in 
 
 - **Trigger:** 
  
@@ -176,10 +175,9 @@
 - **Primary Sequence:**
   
   1. User click on the profile they want to follow 
-  2. Click on the follow button 
-  3. User wait for the follow request recipient to accept or decline
-  4. System change the follow button to “followed”
-  5. If the user clock on followed button again, it unfollows them
+  2. Click on the `follow` button 
+  3. System change the follow button to “followed”
+  4. If the user clock on followed button again, it unfollows them
 
 - **Primary Postconditions:** 
  
@@ -192,6 +190,7 @@
   2. A pop up message, or on screen display showing the user you trying to follow does not exist
 
 ## 7. Display current/ others’ user profile (Haolin)
+
 - **Pre-condition:** 
   
   1. The user needs to be logged in 
@@ -199,8 +198,6 @@
 - **Trigger:** 
  
   1. To view the other profile, you either need to search for them 
-  2. Or click on their profile on your follow list 
-  3. Click on a button that bring you to your own profile
 
 - **Primary Sequence:**
   
