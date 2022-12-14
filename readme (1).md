@@ -75,22 +75,22 @@ The non-functional requirements are as listed above. Our team wants to ensure th
 - [Creating an Account](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#creating-an-account)
 - [Navigation Bar](https://github.com/puibtx/131-Team10/blob/master/readme%20(1).md#navigation-bar)
 ### Running the Program (prerequisite)
-1)make sure we have some form of linux based command line. The make sure you have python install. (installation varies among platform) 
+- 1)make sure we have some form of linux based command line. The make sure you have python install. (installation varies among platform) 
 https://realpython.com/installing-python/#how-to-install-on-ubuntu-and-linux-mint
-2) make sure python pip is install for other depency and libraries
+- 2) make sure python pip is install for other depency and libraries
 https://pip.pypa.io/en/stable/installation/
-3)install flask through python pip 
+- 3)install flask through python pip 
 https://flask.palletsprojects.com/en/2.2.x/installation/
-4) install config through 
+- 4) install config through 
 ```
 $pip install config
 
 ```
-5)install SQLAlchemy
+- 5)install SQLAlchemy
 https://pypi.org/project/flask-sqlalchemy/
-6)install flask_login
+- 6)install flask_login
 https://flask-login.readthedocs.io/en/latest/
-7)intall flask_wtf
+- 7)intall flask_wtf
 https://flask-wtf.readthedocs.io/en/0.15.x/install/
 
 ### Running the Program
